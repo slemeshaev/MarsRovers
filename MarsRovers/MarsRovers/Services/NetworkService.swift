@@ -10,21 +10,12 @@ import Foundation
 class NetworkService {
     
     // построение запроса данных по URL
-    func request(completion: @escaping (Data?, Error?) -> Void) {
+    func request(nameRover: String, completion: @escaping (Data?, Error?) -> Void) {
         let parameters = self.prepareParameters()
-        let url = self.url(nameRover: "curiosity", params: parameters)
-        var request = URLRequest(url: url)
-        request.allHTTPHeaderFields = prepareHeader()
-        request.httpMethod = "get"
+        let url = self.url(nameRover: nameRover, params: parameters)
+        let request = URLRequest(url: url)
         let task = createDataTask(from: request, completion: completion)
         task.resume()
-    }
-    
-    // приватные значения
-    private func prepareHeader() -> [String: String]? {
-        var headers = [String: String]()
-        headers["Authorization"] = API.apiKey
-        return headers
     }
     
     // метод создания параметров
@@ -32,6 +23,7 @@ class NetworkService {
         var parameters = [String: String]()
         parameters["sol"] = String(1000)
         parameters["page"] = String(1)
+        parameters["api_key"] = API.apiKey
         return parameters
     }
     

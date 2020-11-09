@@ -11,14 +11,16 @@ class CamerasCollectionViewController: UICollectionViewController {
     
     static let reuseIdentifier = "CellId"
     
-    var networkService = NetworkService()
+    var networkDataFetcher = NetworkDataFetcher()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.backgroundColor = .orange
         setupCollectionView()
-        networkService.request { (_, _) in
-            print("123")
+        self.networkDataFetcher.getImages { (totalResults) in
+            totalResults?.photos.map({ (photo) in
+                print("Адрес снимка: \(photo.img_src)")
+            })
         }
     }
     
