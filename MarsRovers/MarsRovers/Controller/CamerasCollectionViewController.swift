@@ -10,11 +10,16 @@ import UIKit
 class CamerasCollectionViewController: UICollectionViewController {
     
     static let reuseIdentifier = "CellId"
+    
+    var networkService = NetworkService()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.backgroundColor = .orange
         setupCollectionView()
+        networkService.request { (_, _) in
+            print("123")
+        }
     }
     
     // метод настройки collectionView
