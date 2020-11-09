@@ -7,46 +7,33 @@
 
 import UIKit
 
-class MainTabViewController: UITabBarController, UITabBarControllerDelegate {
+class MainTabViewController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // delegate
-        self.delegate = self
+        view.backgroundColor = .gray
         
-        // configure view controllers
-        configureViewControllers()
-    }
-    
-    // функция для создания контроллера представления
-    // который существует в контроллере панели вкладок
-    func configureViewControllers() {
+        let camerasVC = CamerasCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout())
+        let settingsVC = SettingsTableViewController()
         
-        // cameras viewcontroller
-        let camerasVC = constructNavController(unselectedImage: UIImage(systemName: "photo")!, selectedImage: UIImage(systemName: "photo.fill")!, nameTitle: "Камеры", rootViewController: CamerasCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout()))
-        
-        // settings viewcontroller
-        let settingsVC = constructNavController(unselectedImage: UIImage(systemName: "gearshape")!, selectedImage: UIImage(systemName: "gearshape.fill")!, nameTitle: "Настройки", rootViewController: SettingsTableViewController())
-        
-        // view controller добавляем в tabbar controller
-        viewControllers = [camerasVC, settingsVC]
+        // контроллеры
+        viewControllers = [
+            constructNavController(rootViewController: camerasVC, title: "Камеры", image: UIImage(systemName: "photo")!),
+            constructNavController(rootViewController: settingsVC, title: "Настройки", image: UIImage(systemName: "gearshape")!)
+        ]
         
         // tabbar tintcolor
         tabBar.tintColor = UIColor(red: 109/255, green: 37/255, blue: 251/255, alpha: 1)
+        
     }
     
-    // создать navigation controllers
-    func constructNavController(unselectedImage: UIImage, selectedImage: UIImage, nameTitle: String, rootViewController: UIViewController = UIViewController()) -> UINavigationController {
-        
-        // создаем navigation controller
-        let navigationController = UINavigationController(rootViewController: rootViewController)
-        navigationController.tabBarItem.image = unselectedImage
-        navigationController.title = nameTitle
-        navigationController.tabBarItem.selectedImage = selectedImage
-        navigationController.navigationBar.tintColor = .black
-        
-        // возвращаем navigation controller
-        return navigationController
+    // метод генерации NavigationController
+    private func constructNavController(rootViewController: UIViewController, title: String, image: UIImage) -> UIViewController {
+        let navigationVC = UINavigationController(rootViewController: rootViewController)
+        navigationVC.tabBarItem.title = title
+        navigationVC.tabBarItem.image = image
+        return navigationVC
     }
+    
 }

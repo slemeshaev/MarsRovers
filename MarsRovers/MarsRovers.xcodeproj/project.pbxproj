@@ -15,6 +15,10 @@
 		6605039925599A27001C0BD4 /* MainTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6605039825599A27001C0BD4 /* MainTabViewController.swift */; };
 		660503A125599CDC001C0BD4 /* CamerasCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660503A025599CDC001C0BD4 /* CamerasCollectionViewController.swift */; };
 		660503A425599D89001C0BD4 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660503A325599D89001C0BD4 /* SettingsTableViewController.swift */; };
+		660503AA2559A49B001C0BD4 /* Rover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660503A92559A49B001C0BD4 /* Rover.swift */; };
+		660503D12559B567001C0BD4 /* SectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660503D02559B567001C0BD4 /* SectionHeader.swift */; };
+		660503D42559B80C001C0BD4 /* CameraCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660503D32559B80C001C0BD4 /* CameraCell.swift */; };
+		660503D92559B99E001C0BD4 /* SelfConfiguringCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660503D82559B99E001C0BD4 /* SelfConfiguringCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +32,10 @@
 		6605039825599A27001C0BD4 /* MainTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabViewController.swift; sourceTree = "<group>"; };
 		660503A025599CDC001C0BD4 /* CamerasCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CamerasCollectionViewController.swift; sourceTree = "<group>"; };
 		660503A325599D89001C0BD4 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
+		660503A92559A49B001C0BD4 /* Rover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rover.swift; sourceTree = "<group>"; };
+		660503D02559B567001C0BD4 /* SectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeader.swift; sourceTree = "<group>"; };
+		660503D32559B80C001C0BD4 /* CameraCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraCell.swift; sourceTree = "<group>"; };
+		660503D82559B99E001C0BD4 /* SelfConfiguringCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfConfiguringCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,14 +71,58 @@
 				66050383255994B0001C0BD4 /* AppDelegate.swift */,
 				66050385255994B0001C0BD4 /* SceneDelegate.swift */,
 				6605039825599A27001C0BD4 /* MainTabViewController.swift */,
-				660503A025599CDC001C0BD4 /* CamerasCollectionViewController.swift */,
-				660503A325599D89001C0BD4 /* SettingsTableViewController.swift */,
+				660503A62559A418001C0BD4 /* Model */,
+				660503A72559A429001C0BD4 /* View */,
+				660503A82559A436001C0BD4 /* Controller */,
+				660503D72559B978001C0BD4 /* Protocols */,
 				66050389255994B0001C0BD4 /* Main.storyboard */,
 				6605038C255994B1001C0BD4 /* Assets.xcassets */,
 				6605038E255994B1001C0BD4 /* LaunchScreen.storyboard */,
 				66050391255994B1001C0BD4 /* Info.plist */,
 			);
 			path = MarsRovers;
+			sourceTree = "<group>";
+		};
+		660503A62559A418001C0BD4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				660503A92559A49B001C0BD4 /* Rover.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		660503A72559A429001C0BD4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				660503D02559B567001C0BD4 /* SectionHeader.swift */,
+				660503D62559B946001C0BD4 /* Cell */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		660503A82559A436001C0BD4 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				660503A025599CDC001C0BD4 /* CamerasCollectionViewController.swift */,
+				660503A325599D89001C0BD4 /* SettingsTableViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		660503D62559B946001C0BD4 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				660503D32559B80C001C0BD4 /* CameraCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		660503D72559B978001C0BD4 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				660503D82559B99E001C0BD4 /* SelfConfiguringCell.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -145,9 +197,13 @@
 			files = (
 				6605039925599A27001C0BD4 /* MainTabViewController.swift in Sources */,
 				660503A425599D89001C0BD4 /* SettingsTableViewController.swift in Sources */,
+				660503AA2559A49B001C0BD4 /* Rover.swift in Sources */,
+				660503D12559B567001C0BD4 /* SectionHeader.swift in Sources */,
+				660503D42559B80C001C0BD4 /* CameraCell.swift in Sources */,
 				66050384255994B0001C0BD4 /* AppDelegate.swift in Sources */,
 				66050386255994B0001C0BD4 /* SceneDelegate.swift in Sources */,
 				660503A125599CDC001C0BD4 /* CamerasCollectionViewController.swift in Sources */,
+				660503D92559B99E001C0BD4 /* SelfConfiguringCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

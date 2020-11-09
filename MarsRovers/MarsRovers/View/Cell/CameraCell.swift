@@ -21,6 +21,13 @@ class CameraCell: UICollectionViewCell, SelfConfiguringCell {
         setupConstraints()
     }
     
+    func configure<U>(with value: U) where U : Hashable {
+//        guard let chat: MChat = value as? MChat else { return }
+//        friendImageView.sd_setImage(with: URL(string: chat.friendUserImageString), completed: nil)
+//        friendName.text = chat.friendUsername
+//        lastMessage.text = chat.lastMessageContent
+    }
+    
     // установка констрейнтов для friendImageView
     private func setupConstraints() {
         snapshotImageView.translatesAutoresizingMaskIntoConstraints = false
