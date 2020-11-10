@@ -18,6 +18,22 @@ class SettingsTableViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: tableView.frame.width, height: 50))
+        let label = UILabel()
+        label.frame = CGRect.init(x: 15, y: 15, width: headerView.frame.width-10, height: headerView.frame.height-10)
+        label.text = "Марсоходы"
+        label.font = UIFont.boldSystemFont(ofSize: 30)
+
+        headerView.addSubview(label)
+
+        return headerView
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 65
+    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return rovers.count
