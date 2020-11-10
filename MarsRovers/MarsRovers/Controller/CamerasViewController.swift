@@ -7,8 +7,9 @@
 
 import UIKit
 
-struct MImage: Hashable {
-    var snapshot: UIImage
+// тестовая модель данных
+struct MImage: Hashable, Decodable {
+    var snapshot: String
     var date: String
     var id: Int
     
@@ -21,12 +22,14 @@ struct MImage: Hashable {
     }
 }
 
+
 class CamerasViewController: UIViewController {
     
-    static let reuseIdentifier = "CellId"
+//    static let reuseIdentifier = "CellId"
+//    static let reuseIdentifierTwo = "CellId2"
     
     enum Section: Int, CaseIterable {
-        case camera
+        case camera1, camera2
     }
     
     var collectionView: UICollectionView!
@@ -34,13 +37,9 @@ class CamerasViewController: UIViewController {
     
     var networkDataFetcher = NetworkDataFetcher()
     
-    // массив картинок
-    let imagesRover: [MImage] = [
-        MImage(snapshot: UIImage(named: "image1")!, date: "2020-12-12", id: 1),
-        MImage(snapshot: UIImage(named: "image2")!, date: "2010-02-14", id: 2),
-        MImage(snapshot: UIImage(named: "image3")!, date: "2018-08-16", id: 3),
-        MImage(snapshot: UIImage(named: "image4")!, date: "2017-03-19", id: 4)
-    ]
+    // массивы с фотками
+    let cameraOneImages = Bundle.main.decode([MImage].self, from: "cameraImages.json")
+    let cameraTwoImages = Bundle.main.decode([MImage].self, from: "cameraImages2.json")
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,9 +61,8 @@ class CamerasViewController: UIViewController {
         collectionView.backgroundColor = .white
         view.addSubview(collectionView)
         
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: CamerasViewController.reuseIdentifier)
-        collectionView.delegate = self
-        collectionView.dataSource = self
+        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cellid")
+        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cellid2")
     }
     
     private func createDataSource() {
@@ -73,19 +71,23 @@ class CamerasViewController: UIViewController {
                 fatalError("Неизвестный вид секции")
             }
             switch section {
-            case .camera:
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CamerasViewController.reuseIdentifier, for: indexPath)
+            case .camera1:
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellid", for: indexPath)
                 cell.backgroundColor = .systemBlue
                 return cell
+            case .camera2:
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellid2", for: indexPath)
+                cell.backgroundColor = .systemGreen
+                return cell
             }
-            
         })
     }
     
     private func reloadData() {
         var snapshot = NSDiffableDataSourceSnapshot<Section, MImage>()
-        snapshot.appendSections([.camera])
-        snapshot.appendItems(imagesRover, toSection: .camera)
+        snapshot.appendSections([.camera1, .camera2])
+        snapshot.appendItems(cameraOneImages, toSection: .camera1)
+        snapshot.appendItems(cameraTwoImages, toSection: .camera2)
         dataSource?.apply(snapshot, animatingDifferences: true)
     }
     
@@ -97,14 +99,15 @@ class CamerasViewController: UIViewController {
                                                   heightDimension: .fractionalHeight(1))
             let item = NSCollectionLayoutItem(layoutSize: itemSize)
             // группа
-            let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
-                                                   heightDimension: .absolute(84))
-            let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
+            let groupSize = NSCollectionLayoutSize(widthDimension: .absolute(120),
+                                                   heightDimension: .absolute(100))
+            let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
             group.contentInsets = NSDirectionalEdgeInsets.init(top: 0, leading: 10, bottom: 8, trailing: 0)
             // секция
             let section = NSCollectionLayoutSection(group: group)
-            section.contentInsets = NSDirectionalEdgeInsets.init(top: 16, leading: 20, bottom: 0, trailing: 20)
-            
+            section.interGroupSpacing = 16
+            section.contentInsets = NSDirectionalEdgeInsets.init(top: 16, leading: 10, bottom: 0, trailing: 10)
+            section.orthogonalScrollingBehavior = .continuous
             return section
         }
         return layout
@@ -117,19 +120,4 @@ extension CamerasViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize.init(width: view.frame.width, height: 64)
     }
-}
-
-// MARK: - UICollectionViewDelegate, UICollectionViewDataSource
-extension CamerasViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CamerasViewController.reuseIdentifier, for: indexPath)
-        cell.backgroundColor = .red
-        cell.layer.borderWidth = 1
-        return cell
-    }
-    
 }

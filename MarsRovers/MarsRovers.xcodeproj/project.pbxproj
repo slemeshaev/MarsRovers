@@ -22,6 +22,9 @@
 		660503E12559D32D001C0BD4 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660503E02559D32D001C0BD4 /* API.swift */; };
 		660503E52559EC80001C0BD4 /* NetworkDataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660503E42559EC80001C0BD4 /* NetworkDataFetcher.swift */; };
 		660503E82559EDB1001C0BD4 /* RoverSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660503E72559EDB1001C0BD4 /* RoverSnapshot.swift */; };
+		660503F3255A9711001C0BD4 /* cameraImages.json in Resources */ = {isa = PBXBuildFile; fileRef = 660503F2255A9711001C0BD4 /* cameraImages.json */; };
+		660503F7255A987D001C0BD4 /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660503F6255A987D001C0BD4 /* Bundle.swift */; };
+		660503FA255AAB25001C0BD4 /* cameraImages2.json in Resources */ = {isa = PBXBuildFile; fileRef = 660503F9255AAB25001C0BD4 /* cameraImages2.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +45,9 @@
 		660503E02559D32D001C0BD4 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		660503E42559EC80001C0BD4 /* NetworkDataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDataFetcher.swift; sourceTree = "<group>"; };
 		660503E72559EDB1001C0BD4 /* RoverSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RoverSnapshot.swift; path = MarsRovers/Model/RoverSnapshot.swift; sourceTree = SOURCE_ROOT; };
+		660503F2255A9711001C0BD4 /* cameraImages.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = cameraImages.json; sourceTree = "<group>"; };
+		660503F6255A987D001C0BD4 /* Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
+		660503F9255AAB25001C0BD4 /* cameraImages2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cameraImages2.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,8 +86,11 @@
 				660503A72559A429001C0BD4 /* View */,
 				660503A82559A436001C0BD4 /* Controller */,
 				660503D72559B978001C0BD4 /* Protocols */,
+				660503F5255A9849001C0BD4 /* Extensions */,
 				660503DC2559BDEC001C0BD4 /* Services */,
 				66050389255994B0001C0BD4 /* Main.storyboard */,
+				660503F2255A9711001C0BD4 /* cameraImages.json */,
+				660503F9255AAB25001C0BD4 /* cameraImages2.json */,
 				6605038C255994B1001C0BD4 /* Assets.xcassets */,
 				6605038E255994B1001C0BD4 /* LaunchScreen.storyboard */,
 				66050391255994B1001C0BD4 /* Info.plist */,
@@ -142,6 +151,14 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		660503F5255A9849001C0BD4 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				660503F6255A987D001C0BD4 /* Bundle.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -199,7 +216,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				660503F3255A9711001C0BD4 /* cameraImages.json in Resources */,
 				66050390255994B1001C0BD4 /* LaunchScreen.storyboard in Resources */,
+				660503FA255AAB25001C0BD4 /* cameraImages2.json in Resources */,
 				6605038D255994B1001C0BD4 /* Assets.xcassets in Resources */,
 				6605038B255994B0001C0BD4 /* Main.storyboard in Resources */,
 			);
@@ -213,6 +232,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				660503E52559EC80001C0BD4 /* NetworkDataFetcher.swift in Sources */,
+				660503F7255A987D001C0BD4 /* Bundle.swift in Sources */,
 				660503E12559D32D001C0BD4 /* API.swift in Sources */,
 				660503DE2559BE1A001C0BD4 /* NetworkService.swift in Sources */,
 				6605039925599A27001C0BD4 /* MainTabViewController.swift in Sources */,
