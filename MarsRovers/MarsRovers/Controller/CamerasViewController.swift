@@ -72,15 +72,6 @@ class CamerasViewController: UIViewController {
         collectionView.register(CameraCell.self, forCellWithReuseIdentifier: CameraCell.reuseId)
     }
     
-    // метод конфигурации ячейки
-    private func configure<T: SelfConfiguringCell>(cellType: T.Type, with value: MImage, for indexPath: IndexPath) -> T {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellType.reuseId, for: indexPath) as? T else {
-            fatalError("Невозможно исключить из очереди \(cellType)")
-        }
-        cell.configure(with: value)
-        return cell
-    }
-    
     //
     private func createDataSource() {
         dataSource = UICollectionViewDiffableDataSource<Section, MImage>(collectionView: collectionView, cellProvider: { (collectionView, indexPath, image) -> UICollectionViewCell? in
@@ -89,9 +80,9 @@ class CamerasViewController: UIViewController {
             }
             switch section {
             case .camera1:
-                return self.configure(cellType: CameraCell.self, with: image, for: indexPath)
+                return self.configure(collectionView: collectionView, cellType: CameraCell.self, with: image, for: indexPath)
             case .camera2:
-                return self.configure(cellType: CameraCell.self, with: image, for: indexPath)
+                return self.configure(collectionView: collectionView, cellType: CameraCell.self, with: image, for: indexPath)
             }
         })
         dataSource?.supplementaryViewProvider = {

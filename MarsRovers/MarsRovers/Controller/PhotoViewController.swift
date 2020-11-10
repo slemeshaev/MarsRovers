@@ -43,7 +43,7 @@ class PhotoViewController: UIViewController {
         // регистрация заголовка
         collectionView.register(SectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SectionHeader.reuseId)
         //регистрация ячейки
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cellid")
+        collectionView.register(PhotoCell.self, forCellWithReuseIdentifier: PhotoCell.reuseId)
     }
     
     // reloadData
@@ -65,9 +65,7 @@ extension PhotoViewController {
             }
             switch section {
             case .photos:
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellid", for: indexPath)
-                cell.backgroundColor = .yellow
-                return cell
+                return self.configure(collectionView: collectionView, cellType: PhotoCell.self, with: photo, for: indexPath)
             }
         })
         

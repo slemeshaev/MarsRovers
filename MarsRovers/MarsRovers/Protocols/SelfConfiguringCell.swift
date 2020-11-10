@@ -10,5 +10,5 @@ import UIKit
 // протокол для конфигурации ячеек
 protocol SelfConfiguringCell {
     static var reuseId: String { get }
-    func configure(with value: MImage)
+    func configure<U: Hashable>(with value: U)
 }
