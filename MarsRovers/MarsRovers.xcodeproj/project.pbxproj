@@ -25,6 +25,7 @@
 		660503F3255A9711001C0BD4 /* cameraImages.json in Resources */ = {isa = PBXBuildFile; fileRef = 660503F2255A9711001C0BD4 /* cameraImages.json */; };
 		660503F7255A987D001C0BD4 /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660503F6255A987D001C0BD4 /* Bundle.swift */; };
 		66050400255AC161001C0BD4 /* cameraAnotherImages.json in Resources */ = {isa = PBXBuildFile; fileRef = 660503FF255AC161001C0BD4 /* cameraAnotherImages.json */; };
+		66050404255AF9F8001C0BD4 /* fakeImages.json in Resources */ = {isa = PBXBuildFile; fileRef = 66050403255AF9F8001C0BD4 /* fakeImages.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		660503F2255A9711001C0BD4 /* cameraImages.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = cameraImages.json; sourceTree = "<group>"; };
 		660503F6255A987D001C0BD4 /* Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
 		660503FF255AC161001C0BD4 /* cameraAnotherImages.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cameraAnotherImages.json; sourceTree = "<group>"; };
+		66050403255AF9F8001C0BD4 /* fakeImages.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = fakeImages.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +93,7 @@
 				66050389255994B0001C0BD4 /* Main.storyboard */,
 				660503F2255A9711001C0BD4 /* cameraImages.json */,
 				660503FF255AC161001C0BD4 /* cameraAnotherImages.json */,
+				66050403255AF9F8001C0BD4 /* fakeImages.json */,
 				6605038C255994B1001C0BD4 /* Assets.xcassets */,
 				6605038E255994B1001C0BD4 /* LaunchScreen.storyboard */,
 				66050391255994B1001C0BD4 /* Info.plist */,
@@ -109,7 +112,7 @@
 		660503A72559A429001C0BD4 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				660503D02559B567001C0BD4 /* SectionHeader.swift */,
+				66050402255AF98A001C0BD4 /* Header */,
 				660503D62559B946001C0BD4 /* Cell */,
 			);
 			path = View;
@@ -157,6 +160,14 @@
 				660503F6255A987D001C0BD4 /* Bundle.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		66050402255AF98A001C0BD4 /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				660503D02559B567001C0BD4 /* SectionHeader.swift */,
+			);
+			path = Header;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -216,6 +227,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66050404255AF9F8001C0BD4 /* fakeImages.json in Resources */,
 				660503F3255A9711001C0BD4 /* cameraImages.json in Resources */,
 				66050390255994B1001C0BD4 /* LaunchScreen.storyboard in Resources */,
 				6605038D255994B1001C0BD4 /* Assets.xcassets in Resources */,
