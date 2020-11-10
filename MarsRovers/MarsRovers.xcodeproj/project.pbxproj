@@ -13,7 +13,7 @@
 		6605038D255994B1001C0BD4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6605038C255994B1001C0BD4 /* Assets.xcassets */; };
 		66050390255994B1001C0BD4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6605038E255994B1001C0BD4 /* LaunchScreen.storyboard */; };
 		6605039925599A27001C0BD4 /* MainTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6605039825599A27001C0BD4 /* MainTabViewController.swift */; };
-		660503A125599CDC001C0BD4 /* CamerasCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660503A025599CDC001C0BD4 /* CamerasCollectionViewController.swift */; };
+		660503A125599CDC001C0BD4 /* CamerasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660503A025599CDC001C0BD4 /* CamerasViewController.swift */; };
 		660503A425599D89001C0BD4 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660503A325599D89001C0BD4 /* SettingsTableViewController.swift */; };
 		660503D12559B567001C0BD4 /* SectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660503D02559B567001C0BD4 /* SectionHeader.swift */; };
 		660503D42559B80C001C0BD4 /* CameraCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660503D32559B80C001C0BD4 /* CameraCell.swift */; };
@@ -33,7 +33,7 @@
 		6605038F255994B1001C0BD4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		66050391255994B1001C0BD4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6605039825599A27001C0BD4 /* MainTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabViewController.swift; sourceTree = "<group>"; };
-		660503A025599CDC001C0BD4 /* CamerasCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CamerasCollectionViewController.swift; sourceTree = "<group>"; };
+		660503A025599CDC001C0BD4 /* CamerasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CamerasViewController.swift; sourceTree = "<group>"; };
 		660503A325599D89001C0BD4 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		660503D02559B567001C0BD4 /* SectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeader.swift; sourceTree = "<group>"; };
 		660503D32559B80C001C0BD4 /* CameraCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraCell.swift; sourceTree = "<group>"; };
@@ -110,7 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				6605039825599A27001C0BD4 /* MainTabViewController.swift */,
-				660503A025599CDC001C0BD4 /* CamerasCollectionViewController.swift */,
+				660503A025599CDC001C0BD4 /* CamerasViewController.swift */,
 				660503A325599D89001C0BD4 /* SettingsTableViewController.swift */,
 			);
 			path = Controller;
@@ -221,7 +221,7 @@
 				660503D42559B80C001C0BD4 /* CameraCell.swift in Sources */,
 				66050384255994B0001C0BD4 /* AppDelegate.swift in Sources */,
 				66050386255994B0001C0BD4 /* SceneDelegate.swift in Sources */,
-				660503A125599CDC001C0BD4 /* CamerasCollectionViewController.swift in Sources */,
+				660503A125599CDC001C0BD4 /* CamerasViewController.swift in Sources */,
 				660503E82559EDB1001C0BD4 /* RoverSnapshot.swift in Sources */,
 				660503D92559B99E001C0BD4 /* SelfConfiguringCell.swift in Sources */,
 			);

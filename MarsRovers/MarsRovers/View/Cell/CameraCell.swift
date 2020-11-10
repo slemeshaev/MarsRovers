@@ -28,7 +28,7 @@ class CameraCell: UICollectionViewCell, SelfConfiguringCell {
 //        lastMessage.text = chat.lastMessageContent
     }
     
-    // установка констрейнтов для friendImageView
+    // установка констрейнтов для snapshotImageView
     private func setupConstraints() {
         snapshotImageView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(snapshotImageView)

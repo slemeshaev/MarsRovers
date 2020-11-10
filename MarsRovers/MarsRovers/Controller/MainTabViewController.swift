@@ -12,15 +12,17 @@ class MainTabViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .gray
-        
-        let camerasVC = CamerasCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout())
+        let camerasVC = CamerasViewController()
         let settingsVC = SettingsTableViewController()
+        
+        let boldConfig = UIImage.SymbolConfiguration(weight: .medium)
+        guard let cameraImage = UIImage(systemName: "photo", withConfiguration: boldConfig) else { return }
+        guard let settingsImage = UIImage(systemName: "gearshape", withConfiguration: boldConfig) else { return }
         
         // контроллеры
         viewControllers = [
-            constructNavController(rootViewController: camerasVC, title: "Камеры", image: UIImage(systemName: "photo")!),
-            constructNavController(rootViewController: settingsVC, title: "Настройки", image: UIImage(systemName: "gearshape")!)
+            constructNavController(rootViewController: camerasVC, title: "Камеры", image: cameraImage),
+            constructNavController(rootViewController: settingsVC, title: "Настройки", image: settingsImage)
         ]
         
         // tabbar tintcolor
