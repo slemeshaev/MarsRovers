@@ -11,36 +11,36 @@ class CameraCell: UICollectionViewCell, SelfConfiguringCell {
     
     static var reuseId: String = "CameraCellId"
     
-    let snapshotImageView = UIImageView()
+    // свойства
+    let cameraImageView = UIImageView()
+    let dateLabel = UILabel()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .yellow
-        self.layer.cornerRadius = 6
+        
+        self.layer.cornerRadius = 4
         self.clipsToBounds = true
+        
         setupConstraints()
     }
     
-    func configure<U>(with value: U) where U : Hashable {
-//        guard let chat: MChat = value as? MChat else { return }
-//        friendImageView.sd_setImage(with: URL(string: chat.friendUserImageString), completed: nil)
-//        friendName.text = chat.friendUsername
-//        lastMessage.text = chat.lastMessageContent
+    // метод конфигурации ячейки
+    func configure(with value: MImage) {
+        cameraImageView.image = UIImage(named: value.snapshot)
     }
     
-    // установка констрейнтов для snapshotImageView
+    // метод установки констрейнтов
     private func setupConstraints() {
-        snapshotImageView.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(snapshotImageView)
+        cameraImageView.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(cameraImageView)
         
         NSLayoutConstraint.activate([
-            // растягиваем изображение по всему imageView
-            snapshotImageView.topAnchor.constraint(equalTo: self.topAnchor),
-            snapshotImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            snapshotImageView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            snapshotImageView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+            cameraImageView.topAnchor.constraint(equalTo: self.topAnchor),
+            cameraImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            cameraImageView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            cameraImageView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ])
-        
     }
     
     required init?(coder: NSCoder) {

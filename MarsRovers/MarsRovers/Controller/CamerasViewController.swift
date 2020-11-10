@@ -61,10 +61,19 @@ class CamerasViewController: UIViewController {
         collectionView.backgroundColor = .white
         view.addSubview(collectionView)
         
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cellid")
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cellid2")
+        collectionView.register(CameraCell.self, forCellWithReuseIdentifier: CameraCell.reuseId)
     }
     
+    // метод конфигурации ячейки
+    private func configure<T: SelfConfiguringCell>(cellType: T.Type, with value: MImage, for indexPath: IndexPath) -> T {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellType.reuseId, for: indexPath) as? T else {
+            fatalError("Невозможно исключить из очереди \(cellType)")
+        }
+        cell.configure(with: value)
+        return cell
+    }
+    
+    //
     private func createDataSource() {
         dataSource = UICollectionViewDiffableDataSource<Section, MImage>(collectionView: collectionView, cellProvider: { (collectionView, indexPath, image) -> UICollectionViewCell? in
             guard let section = Section(rawValue: indexPath.section) else {
@@ -72,13 +81,9 @@ class CamerasViewController: UIViewController {
             }
             switch section {
             case .camera1:
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellid", for: indexPath)
-                cell.backgroundColor = .systemBlue
-                return cell
+                return self.configure(cellType: CameraCell.self, with: image, for: indexPath)
             case .camera2:
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellid2", for: indexPath)
-                cell.backgroundColor = .systemGreen
-                return cell
+                return self.configure(cellType: CameraCell.self, with: image, for: indexPath)
             }
         })
     }
