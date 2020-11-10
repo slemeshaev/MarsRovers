@@ -28,8 +28,9 @@ class SectionHeader: UICollectionReusableView {
         ])
     }
     
-    func configure(text: String) {
+    func configure(text: String, font: UIFont?) {
         titleHeader.text = text
+        titleHeader.font = font
     }
     
     required init?(coder: NSCoder) {
