@@ -1,5 +1,5 @@
 //
-//  CamerasCollectionViewController.swift
+//  CamerasViewController.swift
 //  MarsRovers
 //
 //  Created by Станислав Лемешаев on 09.11.2020.
@@ -7,15 +7,56 @@
 
 import UIKit
 
+struct MImage: Hashable {
+    var snapshot: UIImage
+    var date: String
+    var id: Int
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+    
+    static func == (lhs: MImage, rhs: MImage) -> Bool {
+        return lhs.id == rhs.id
+    }
+}
+
 class CamerasViewController: UIViewController {
     
     static let reuseIdentifier = "CellId"
+    
+    enum Section: Int, CaseIterable {
+        case camera
+    }
+    
     var collectionView: UICollectionView!
+    var dataSource: UICollectionViewDiffableDataSource<Section, MImage>?
     
     var networkDataFetcher = NetworkDataFetcher()
+    
+    // массив картинок
+    let imagesRover: [MImage] = [
+        MImage(snapshot: UIImage(named: "image1")!, date: "2020-12-12", id: 1),
+        MImage(snapshot: UIImage(named: "image2")!, date: "2010-02-14", id: 2),
+        MImage(snapshot: UIImage(named: "image3")!, date: "2018-08-16", id: 3),
+        MImage(snapshot: UIImage(named: "image4")!, date: "2017-03-19", id: 4)
+    ]
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupCollectionView()
+        createDataSource()
+        reloadData()
+        
+//        self.networkDataFetcher.getImages { (totalResults) in
+//            totalResults?.photos.map({ (photo) in
+//                print("Адрес снимка: \(photo.img_src)")
+//            })
+//        }
+    }
+    
+    // метод установки collectionView
+    private func setupCollectionView() {
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createCompositionLayout())
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         collectionView.backgroundColor = .white
@@ -24,12 +65,28 @@ class CamerasViewController: UIViewController {
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: CamerasViewController.reuseIdentifier)
         collectionView.delegate = self
         collectionView.dataSource = self
-        
-//        self.networkDataFetcher.getImages { (totalResults) in
-//            totalResults?.photos.map({ (photo) in
-//                print("Адрес снимка: \(photo.img_src)")
-//            })
-//        }
+    }
+    
+    private func createDataSource() {
+        dataSource = UICollectionViewDiffableDataSource<Section, MImage>(collectionView: collectionView, cellProvider: { (collectionView, indexPath, image) -> UICollectionViewCell? in
+            guard let section = Section(rawValue: indexPath.section) else {
+                fatalError("Неизвестный вид секции")
+            }
+            switch section {
+            case .camera:
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CamerasViewController.reuseIdentifier, for: indexPath)
+                cell.backgroundColor = .systemBlue
+                return cell
+            }
+            
+        })
+    }
+    
+    private func reloadData() {
+        var snapshot = NSDiffableDataSourceSnapshot<Section, MImage>()
+        snapshot.appendSections([.camera])
+        snapshot.appendItems(imagesRover, toSection: .camera)
+        dataSource?.apply(snapshot, animatingDifferences: true)
     }
     
     // метод создания composition layout
