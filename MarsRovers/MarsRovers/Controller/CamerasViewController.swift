@@ -39,7 +39,7 @@ class CamerasViewController: UIViewController {
     
     // массивы с фотками
     let cameraOneImages = Bundle.main.decode([MImage].self, from: "cameraImages.json")
-    let cameraTwoImages = Bundle.main.decode([MImage].self, from: "cameraImages2.json")
+    let cameraTwoImages = Bundle.main.decode([MImage].self, from: "cameraAnotherImages.json")
 
     override func viewDidLoad() {
         super.viewDidLoad()

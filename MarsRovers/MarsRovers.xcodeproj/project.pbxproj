@@ -24,7 +24,7 @@
 		660503E82559EDB1001C0BD4 /* RoverSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660503E72559EDB1001C0BD4 /* RoverSnapshot.swift */; };
 		660503F3255A9711001C0BD4 /* cameraImages.json in Resources */ = {isa = PBXBuildFile; fileRef = 660503F2255A9711001C0BD4 /* cameraImages.json */; };
 		660503F7255A987D001C0BD4 /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660503F6255A987D001C0BD4 /* Bundle.swift */; };
-		660503FA255AAB25001C0BD4 /* cameraImages2.json in Resources */ = {isa = PBXBuildFile; fileRef = 660503F9255AAB25001C0BD4 /* cameraImages2.json */; };
+		66050400255AC161001C0BD4 /* cameraAnotherImages.json in Resources */ = {isa = PBXBuildFile; fileRef = 660503FF255AC161001C0BD4 /* cameraAnotherImages.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,7 +47,7 @@
 		660503E72559EDB1001C0BD4 /* RoverSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RoverSnapshot.swift; path = MarsRovers/Model/RoverSnapshot.swift; sourceTree = SOURCE_ROOT; };
 		660503F2255A9711001C0BD4 /* cameraImages.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = cameraImages.json; sourceTree = "<group>"; };
 		660503F6255A987D001C0BD4 /* Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
-		660503F9255AAB25001C0BD4 /* cameraImages2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cameraImages2.json; sourceTree = "<group>"; };
+		660503FF255AC161001C0BD4 /* cameraAnotherImages.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cameraAnotherImages.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,7 +90,7 @@
 				660503DC2559BDEC001C0BD4 /* Services */,
 				66050389255994B0001C0BD4 /* Main.storyboard */,
 				660503F2255A9711001C0BD4 /* cameraImages.json */,
-				660503F9255AAB25001C0BD4 /* cameraImages2.json */,
+				660503FF255AC161001C0BD4 /* cameraAnotherImages.json */,
 				6605038C255994B1001C0BD4 /* Assets.xcassets */,
 				6605038E255994B1001C0BD4 /* LaunchScreen.storyboard */,
 				66050391255994B1001C0BD4 /* Info.plist */,
@@ -218,8 +218,8 @@
 			files = (
 				660503F3255A9711001C0BD4 /* cameraImages.json in Resources */,
 				66050390255994B1001C0BD4 /* LaunchScreen.storyboard in Resources */,
-				660503FA255AAB25001C0BD4 /* cameraImages2.json in Resources */,
 				6605038D255994B1001C0BD4 /* Assets.xcassets in Resources */,
+				66050400255AC161001C0BD4 /* cameraAnotherImages.json in Resources */,
 				6605038B255994B0001C0BD4 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
