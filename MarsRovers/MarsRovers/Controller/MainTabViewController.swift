@@ -12,8 +12,7 @@ class MainTabViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //let camerasVC = CamerasViewController()
-        let camerasVC = PhotoViewController()
+        let camerasVC = CamerasViewController()
         let settingsVC = SettingsTableViewController()
         
         let boldConfig = UIImage.SymbolConfiguration(weight: .medium)
