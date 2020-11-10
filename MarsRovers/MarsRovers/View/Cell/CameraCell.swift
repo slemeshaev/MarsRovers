@@ -17,7 +17,7 @@ class CameraCell: UICollectionViewCell, SelfConfiguringCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .yellow
+        //backgroundColor = .yellow
         
         self.layer.cornerRadius = 4
         self.clipsToBounds = true
@@ -35,13 +35,22 @@ class CameraCell: UICollectionViewCell, SelfConfiguringCell {
     // метод установки констрейнтов
     private func setupConstraints() {
         cameraImageView.translatesAutoresizingMaskIntoConstraints = false
+        dateLabel.translatesAutoresizingMaskIntoConstraints = false
         addSubview(cameraImageView)
+        addSubview(dateLabel)
         
         NSLayoutConstraint.activate([
             cameraImageView.topAnchor.constraint(equalTo: self.topAnchor),
             cameraImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             cameraImageView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            cameraImageView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+            cameraImageView.heightAnchor.constraint(equalToConstant: 75)
+        ])
+        
+        NSLayoutConstraint.activate([
+            dateLabel.heightAnchor.constraint(equalToConstant: 10),
+            dateLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            dateLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            dateLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ])
     }
     
