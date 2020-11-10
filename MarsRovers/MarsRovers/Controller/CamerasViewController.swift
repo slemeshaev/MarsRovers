@@ -24,12 +24,18 @@ struct MImage: Hashable, Decodable {
 
 
 class CamerasViewController: UIViewController {
-    
-//    static let reuseIdentifier = "CellId"
-//    static let reuseIdentifierTwo = "CellId2"
-    
+
     enum Section: Int, CaseIterable {
         case camera1, camera2
+        
+        func description() -> String {
+            switch self {
+            case .camera1:
+                return "Камера 1"
+            case .camera2:
+                return "Камера 2"
+            }
+        }
     }
     
     var collectionView: UICollectionView!
@@ -60,7 +66,9 @@ class CamerasViewController: UIViewController {
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         collectionView.backgroundColor = .white
         view.addSubview(collectionView)
-        
+        // регистрация заголовка
+        collectionView.register(SectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SectionHeader.reuseId)
+        // регистрация ячейки
         collectionView.register(CameraCell.self, forCellWithReuseIdentifier: CameraCell.reuseId)
     }
     
@@ -86,6 +94,13 @@ class CamerasViewController: UIViewController {
                 return self.configure(cellType: CameraCell.self, with: image, for: indexPath)
             }
         })
+        dataSource?.supplementaryViewProvider = {
+            collectionView, kind, indexPath in
+            guard let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SectionHeader.reuseId, for: indexPath) as? SectionHeader else { fatalError("Невозможно создать header") }
+            guard let section = Section(rawValue: indexPath.section) else { fatalError("Неизвестный вид секции") }
+            sectionHeader.configure(text: section.description())
+            return sectionHeader
+        }
     }
     
     private func reloadData() {
@@ -111,10 +126,20 @@ class CamerasViewController: UIViewController {
             // секция
             let section = NSCollectionLayoutSection(group: group)
             section.interGroupSpacing = 16
-            section.contentInsets = NSDirectionalEdgeInsets.init(top: 16, leading: 10, bottom: 0, trailing: 10)
+            section.contentInsets = NSDirectionalEdgeInsets.init(top: 10, leading: 10, bottom: 0, trailing: 10)
             section.orthogonalScrollingBehavior = .continuous
+            // заголовок
+            let sectionHeaderSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
+                                                           heightDimension: .estimated(1))
+            let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: sectionHeaderSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
+            section.boundarySupplementaryItems = [sectionHeader]
             return section
         }
+        
+        // настраиваем расстояние между секциями
+        let config = UICollectionViewCompositionalLayoutConfiguration()
+        config.interSectionSpacing = 20
+        layout.configuration = config
         return layout
     }
     
