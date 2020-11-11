@@ -55,9 +55,12 @@ class SectionHeader: UICollectionReusableView {
         
     }
     
+    
     // функция показать фотографии
-    @objc public func showAllPhotos() {
+    @objc func showAllPhotos() {
         print("Сделать переход на PhotoViewController")
+        //let photoVC = PhotoViewController()
+        //navigationController?.pushViewController(photoVC, animated: true)
     }
     
     // метод конфигурации ячейки

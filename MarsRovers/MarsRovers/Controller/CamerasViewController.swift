@@ -40,7 +40,7 @@ class CamerasViewController: UIViewController {
     
     var collectionView: UICollectionView!
     var dataSource: UICollectionViewDiffableDataSource<Section, MImage>?
-    
+
     var networkDataFetcher = NetworkDataFetcher()
     
     // массивы с фотками

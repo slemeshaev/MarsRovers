@@ -14,7 +14,6 @@ class SettingsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
 
     // MARK: - Table view data source
@@ -27,7 +26,6 @@ class SettingsTableViewController: UITableViewController {
         label.font = UIFont.boldSystemFont(ofSize: 30)
 
         headerView.addSubview(label)
-
         return headerView
     }
     
@@ -48,6 +46,7 @@ class SettingsTableViewController: UITableViewController {
         let rover = rovers[indexPath.row]
         // устанавливаем марсоход в надпись ячейки
         cell.textLabel?.text = rover
+        self.navigationItem.title = "Настройки"
         return cell
     }
     
