@@ -13,10 +13,10 @@ struct SnapshotsResults: Decodable {
 
 struct RoverSnapshot: Decodable {
     let id: Int
-    let camera: [Camera]
+    let camera: Camera
     let img_src: String
     let earth_date: String
-    let rover: [Rover]
+    let rover: Rover
 }
 
 struct Camera: Decodable {
