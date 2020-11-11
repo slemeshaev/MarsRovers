@@ -13,9 +13,17 @@ struct SnapshotsResults: Decodable {
 
 struct RoverSnapshot: Decodable {
     let id: Int
+    let camera: [Camera]
     let img_src: String
     let earth_date: String
     let rover: [Rover]
+}
+
+struct Camera: Decodable {
+    let id: Int
+    let name: String
+    let rover_id: Int
+    let full_name: String
 }
 
 struct Rover: Decodable {
