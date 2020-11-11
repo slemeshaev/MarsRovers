@@ -74,6 +74,7 @@ extension PhotoViewController {
             guard let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SectionHeader.reuseId, for: indexPath) as? SectionHeader else { fatalError("Невозможно создать header") }
             guard let section = Section(rawValue: indexPath.section) else { fatalError("Неизвестный вид секции") }
             sectionHeader.configure(text: section.description(), font: .boldSystemFont(ofSize: 40))
+            self.navigationItem.title = "Камеры"
             return sectionHeader
         }
     }
