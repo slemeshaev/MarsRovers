@@ -9,6 +9,14 @@ import UIKit
 
 class SettingsTableViewController: UITableViewController {
 
+    // создаем кнопку галочки
+    private let checkmark: UIImageView = {
+        let image = UIImage(systemName: "checkmark.circle")
+        let imageView = UIImageView(image: image)
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+    
     // создаем массив марсоходов
     let rovers = ["Spirit", "Opportunity", "Curiosity", "Perseverance"]
     
@@ -52,6 +60,7 @@ class SettingsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("Нажата строка \(indexPath.row)")
+        //view.addSubview(checkmark)
     }
 
 }
