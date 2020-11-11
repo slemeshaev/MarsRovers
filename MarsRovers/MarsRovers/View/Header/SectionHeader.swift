@@ -27,6 +27,7 @@ class SectionHeader: UICollectionReusableView {
         containerView.addSubview(buttonArrow)
         
         buttonArrow.setImage(UIImage(systemName: "arrow.right.circle"), for: .normal)
+        buttonArrow.addTarget(self, action: #selector(showAllPhotos), for: .touchUpInside)
         
         // констрейнты для контейнера
         NSLayoutConstraint.activate([
@@ -51,8 +52,15 @@ class SectionHeader: UICollectionReusableView {
             buttonArrow.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
             buttonArrow.widthAnchor.constraint(equalToConstant: 20)
         ])
+        
     }
     
+    // функция показать фотографии
+    @objc public func showAllPhotos() {
+        print("Сделать переход на PhotoViewController")
+    }
+    
+    // метод конфигурации ячейки
     func configure(text: String, font: UIFont?) {
         titleHeader.text = text
         titleHeader.font = font
