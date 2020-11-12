@@ -62,7 +62,6 @@ class CamerasViewController: UIViewController {
             self?.cameraPhotos.map { (photo) in
                 print("URLImage: \(photo.img_src)")
             }
-            //print(photoResults?.photos.count)
         }
     }
     

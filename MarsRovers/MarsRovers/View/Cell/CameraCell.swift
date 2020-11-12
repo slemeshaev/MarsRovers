@@ -28,9 +28,10 @@ class CameraCell: UICollectionViewCell, SelfConfiguringCell {
     
     // метод конфигурации ячейки
     func configure<U>(with value: U) where U : Hashable {
-        guard let camera: MImage = value as? MImage else { return }
-        cameraImageView.image = UIImage(named: camera.snapshot)
-        dateLabel.text = camera.date
+        guard let camera: RoverSnapshot = value as? RoverSnapshot else { return }
+        let imageUrl = camera.img_src
+        cameraImageView.sd_setImage(with: URL(string: imageUrl), completed: nil)
+        dateLabel.text = camera.earth_date
     }
     
     // метод установки констрейнтов
