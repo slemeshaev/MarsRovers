@@ -54,7 +54,7 @@ class CamerasViewController: UIViewController {
         collectionView.register(CameraCell.self, forCellWithReuseIdentifier: CameraCell.reuseId)
     }
     
-    //
+    // метод создания createDataSource
     private func createDataSource() {
         dataSource = UICollectionViewDiffableDataSource<Section, RoverSnapshot>(collectionView: collectionView, cellProvider: { (collectionView, indexPath, image) -> UICollectionViewCell? in
             guard let section = Section(rawValue: indexPath.section) else {

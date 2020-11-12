@@ -9,7 +9,6 @@ import UIKit
 
 class PhotoViewController: UIViewController {
     
-    // let allPhotos = Bundle.main.decode([MImage].self, from: "fakeImages.json")
     var collectionView: UICollectionView!
     var dataSource: UICollectionViewDiffableDataSource<Section, RoverSnapshot>!
     
