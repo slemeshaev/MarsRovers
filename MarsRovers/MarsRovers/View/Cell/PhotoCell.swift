@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import SDWebImage
+import Kingfisher
 
 class PhotoCell: UICollectionViewCell, SelfConfiguringCell {
     
@@ -20,7 +20,7 @@ class PhotoCell: UICollectionViewCell, SelfConfiguringCell {
     func configure<U>(with value: U) where U : Hashable {
         guard let camera: RoverSnapshot = value as? RoverSnapshot else { return }
         let imageUrl = camera.img_src
-        photoImageView.sd_setImage(with: URL(string: imageUrl), completed: nil)
+        photoImageView.kf.setImage(with: URL(string: imageUrl))
         photoDate.text = camera.earth_date
     }
     
