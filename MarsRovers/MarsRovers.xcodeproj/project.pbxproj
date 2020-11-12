@@ -7,23 +7,59 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		06F736A231D93FCC606593EB /* Pods_MarsRovers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF10CEC7F7ABD74BEE38AA04 /* Pods_MarsRovers.framework */; };
 		66050384255994B0001C0BD4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66050383255994B0001C0BD4 /* AppDelegate.swift */; };
 		66050386255994B0001C0BD4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66050385255994B0001C0BD4 /* SceneDelegate.swift */; };
-		66050388255994B0001C0BD4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66050387255994B0001C0BD4 /* ViewController.swift */; };
 		6605038B255994B0001C0BD4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66050389255994B0001C0BD4 /* Main.storyboard */; };
 		6605038D255994B1001C0BD4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6605038C255994B1001C0BD4 /* Assets.xcassets */; };
 		66050390255994B1001C0BD4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6605038E255994B1001C0BD4 /* LaunchScreen.storyboard */; };
+		6605039925599A27001C0BD4 /* MainTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6605039825599A27001C0BD4 /* MainTabViewController.swift */; };
+		660503A125599CDC001C0BD4 /* CamerasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660503A025599CDC001C0BD4 /* CamerasViewController.swift */; };
+		660503A425599D89001C0BD4 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660503A325599D89001C0BD4 /* SettingsTableViewController.swift */; };
+		660503D12559B567001C0BD4 /* SectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660503D02559B567001C0BD4 /* SectionHeader.swift */; };
+		660503D42559B80C001C0BD4 /* CameraCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660503D32559B80C001C0BD4 /* CameraCell.swift */; };
+		660503D92559B99E001C0BD4 /* SelfConfiguringCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660503D82559B99E001C0BD4 /* SelfConfiguringCell.swift */; };
+		660503DE2559BE1A001C0BD4 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660503DD2559BE1A001C0BD4 /* NetworkService.swift */; };
+		660503E12559D32D001C0BD4 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660503E02559D32D001C0BD4 /* API.swift */; };
+		660503E52559EC80001C0BD4 /* NetworkDataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660503E42559EC80001C0BD4 /* NetworkDataFetcher.swift */; };
+		660503E82559EDB1001C0BD4 /* RoverSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660503E72559EDB1001C0BD4 /* RoverSnapshot.swift */; };
+		660503F3255A9711001C0BD4 /* cameraImages.json in Resources */ = {isa = PBXBuildFile; fileRef = 660503F2255A9711001C0BD4 /* cameraImages.json */; };
+		660503F7255A987D001C0BD4 /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660503F6255A987D001C0BD4 /* Bundle.swift */; };
+		66050400255AC161001C0BD4 /* cameraAnotherImages.json in Resources */ = {isa = PBXBuildFile; fileRef = 660503FF255AC161001C0BD4 /* cameraAnotherImages.json */; };
+		66050404255AF9F8001C0BD4 /* fakeImages.json in Resources */ = {isa = PBXBuildFile; fileRef = 66050403255AF9F8001C0BD4 /* fakeImages.json */; };
+		66050407255B0D45001C0BD4 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66050406255B0D45001C0BD4 /* PhotoViewController.swift */; };
+		6605040B255B224A001C0BD4 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6605040A255B224A001C0BD4 /* PhotoCell.swift */; };
+		6605040F255B252C001C0BD4 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6605040E255B252C001C0BD4 /* UIViewController+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5C39544BE7976B9F1B353467 /* Pods-MarsRovers.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarsRovers.release.xcconfig"; path = "Target Support Files/Pods-MarsRovers/Pods-MarsRovers.release.xcconfig"; sourceTree = "<group>"; };
 		66050380255994B0001C0BD4 /* MarsRovers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarsRovers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		66050383255994B0001C0BD4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		66050385255994B0001C0BD4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		66050387255994B0001C0BD4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		6605038A255994B0001C0BD4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6605038C255994B1001C0BD4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6605038F255994B1001C0BD4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		66050391255994B1001C0BD4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6605039825599A27001C0BD4 /* MainTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabViewController.swift; sourceTree = "<group>"; };
+		660503A025599CDC001C0BD4 /* CamerasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CamerasViewController.swift; sourceTree = "<group>"; };
+		660503A325599D89001C0BD4 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
+		660503D02559B567001C0BD4 /* SectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeader.swift; sourceTree = "<group>"; };
+		660503D32559B80C001C0BD4 /* CameraCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraCell.swift; sourceTree = "<group>"; };
+		660503D82559B99E001C0BD4 /* SelfConfiguringCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfConfiguringCell.swift; sourceTree = "<group>"; };
+		660503DD2559BE1A001C0BD4 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		660503E02559D32D001C0BD4 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		660503E42559EC80001C0BD4 /* NetworkDataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDataFetcher.swift; sourceTree = "<group>"; };
+		660503E72559EDB1001C0BD4 /* RoverSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RoverSnapshot.swift; path = MarsRovers/Model/RoverSnapshot.swift; sourceTree = SOURCE_ROOT; };
+		660503F2255A9711001C0BD4 /* cameraImages.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = cameraImages.json; sourceTree = "<group>"; };
+		660503F6255A987D001C0BD4 /* Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
+		660503FF255AC161001C0BD4 /* cameraAnotherImages.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cameraAnotherImages.json; sourceTree = "<group>"; };
+		66050403255AF9F8001C0BD4 /* fakeImages.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = fakeImages.json; sourceTree = "<group>"; };
+		66050406255B0D45001C0BD4 /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
+		6605040A255B224A001C0BD4 /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
+		6605040E255B252C001C0BD4 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		BF10CEC7F7ABD74BEE38AA04 /* Pods_MarsRovers.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MarsRovers.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E2CEE2ECDB3F1A554CE3D7B8 /* Pods-MarsRovers.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarsRovers.debug.xcconfig"; path = "Target Support Files/Pods-MarsRovers/Pods-MarsRovers.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				06F736A231D93FCC606593EB /* Pods_MarsRovers.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +79,8 @@
 			children = (
 				66050382255994B0001C0BD4 /* MarsRovers */,
 				66050381255994B0001C0BD4 /* Products */,
+				F28313F12F6433B79532B5BE /* Pods */,
+				9EB69A49430AE4A5DB099858 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,13 +97,111 @@
 			children = (
 				66050383255994B0001C0BD4 /* AppDelegate.swift */,
 				66050385255994B0001C0BD4 /* SceneDelegate.swift */,
-				66050387255994B0001C0BD4 /* ViewController.swift */,
+				660503A62559A418001C0BD4 /* Model */,
+				660503A72559A429001C0BD4 /* View */,
+				660503A82559A436001C0BD4 /* Controller */,
+				660503D72559B978001C0BD4 /* Protocols */,
+				660503F5255A9849001C0BD4 /* Extensions */,
+				660503DC2559BDEC001C0BD4 /* Services */,
 				66050389255994B0001C0BD4 /* Main.storyboard */,
+				660503F2255A9711001C0BD4 /* cameraImages.json */,
+				660503FF255AC161001C0BD4 /* cameraAnotherImages.json */,
+				66050403255AF9F8001C0BD4 /* fakeImages.json */,
 				6605038C255994B1001C0BD4 /* Assets.xcassets */,
 				6605038E255994B1001C0BD4 /* LaunchScreen.storyboard */,
 				66050391255994B1001C0BD4 /* Info.plist */,
 			);
 			path = MarsRovers;
+			sourceTree = "<group>";
+		};
+		660503A62559A418001C0BD4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				660503E72559EDB1001C0BD4 /* RoverSnapshot.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		660503A72559A429001C0BD4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				66050402255AF98A001C0BD4 /* Header */,
+				660503D62559B946001C0BD4 /* Cell */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		660503A82559A436001C0BD4 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				6605039825599A27001C0BD4 /* MainTabViewController.swift */,
+				660503A025599CDC001C0BD4 /* CamerasViewController.swift */,
+				66050406255B0D45001C0BD4 /* PhotoViewController.swift */,
+				660503A325599D89001C0BD4 /* SettingsTableViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		660503D62559B946001C0BD4 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				660503D32559B80C001C0BD4 /* CameraCell.swift */,
+				6605040A255B224A001C0BD4 /* PhotoCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		660503D72559B978001C0BD4 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				660503D82559B99E001C0BD4 /* SelfConfiguringCell.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		660503DC2559BDEC001C0BD4 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				660503E02559D32D001C0BD4 /* API.swift */,
+				660503DD2559BE1A001C0BD4 /* NetworkService.swift */,
+				660503E42559EC80001C0BD4 /* NetworkDataFetcher.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		660503F5255A9849001C0BD4 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				660503F6255A987D001C0BD4 /* Bundle.swift */,
+				6605040E255B252C001C0BD4 /* UIViewController+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		66050402255AF98A001C0BD4 /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				660503D02559B567001C0BD4 /* SectionHeader.swift */,
+			);
+			path = Header;
+			sourceTree = "<group>";
+		};
+		9EB69A49430AE4A5DB099858 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BF10CEC7F7ABD74BEE38AA04 /* Pods_MarsRovers.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F28313F12F6433B79532B5BE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E2CEE2ECDB3F1A554CE3D7B8 /* Pods-MarsRovers.debug.xcconfig */,
+				5C39544BE7976B9F1B353467 /* Pods-MarsRovers.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +211,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 66050394255994B1001C0BD4 /* Build configuration list for PBXNativeTarget "MarsRovers" */;
 			buildPhases = (
+				B54646866E1F604FEB38B746 /* [CP] Check Pods Manifest.lock */,
 				6605037C255994B0001C0BD4 /* Sources */,
 				6605037D255994B0001C0BD4 /* Frameworks */,
 				6605037E255994B0001C0BD4 /* Resources */,
+				F5F1C1B5B254DF79BDD5BAC7 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -124,22 +263,80 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66050404255AF9F8001C0BD4 /* fakeImages.json in Resources */,
+				660503F3255A9711001C0BD4 /* cameraImages.json in Resources */,
 				66050390255994B1001C0BD4 /* LaunchScreen.storyboard in Resources */,
 				6605038D255994B1001C0BD4 /* Assets.xcassets in Resources */,
+				66050400255AC161001C0BD4 /* cameraAnotherImages.json in Resources */,
 				6605038B255994B0001C0BD4 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		B54646866E1F604FEB38B746 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MarsRovers-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F5F1C1B5B254DF79BDD5BAC7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MarsRovers/Pods-MarsRovers-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MarsRovers/Pods-MarsRovers-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MarsRovers/Pods-MarsRovers-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		6605037C255994B0001C0BD4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				66050388255994B0001C0BD4 /* ViewController.swift in Sources */,
+				6605040F255B252C001C0BD4 /* UIViewController+Extension.swift in Sources */,
+				660503E52559EC80001C0BD4 /* NetworkDataFetcher.swift in Sources */,
+				6605040B255B224A001C0BD4 /* PhotoCell.swift in Sources */,
+				660503F7255A987D001C0BD4 /* Bundle.swift in Sources */,
+				660503E12559D32D001C0BD4 /* API.swift in Sources */,
+				660503DE2559BE1A001C0BD4 /* NetworkService.swift in Sources */,
+				6605039925599A27001C0BD4 /* MainTabViewController.swift in Sources */,
+				660503A425599D89001C0BD4 /* SettingsTableViewController.swift in Sources */,
+				660503D12559B567001C0BD4 /* SectionHeader.swift in Sources */,
+				660503D42559B80C001C0BD4 /* CameraCell.swift in Sources */,
 				66050384255994B0001C0BD4 /* AppDelegate.swift in Sources */,
 				66050386255994B0001C0BD4 /* SceneDelegate.swift in Sources */,
+				660503A125599CDC001C0BD4 /* CamerasViewController.swift in Sources */,
+				66050407255B0D45001C0BD4 /* PhotoViewController.swift in Sources */,
+				660503E82559EDB1001C0BD4 /* RoverSnapshot.swift in Sources */,
+				660503D92559B99E001C0BD4 /* SelfConfiguringCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,6 +480,7 @@
 		};
 		66050395255994B1001C0BD4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E2CEE2ECDB3F1A554CE3D7B8 /* Pods-MarsRovers.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -302,6 +500,7 @@
 		};
 		66050396255994B1001C0BD4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5C39544BE7976B9F1B353467 /* Pods-MarsRovers.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
