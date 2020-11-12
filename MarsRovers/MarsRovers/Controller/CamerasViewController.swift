@@ -54,11 +54,8 @@ class CamerasViewController: UIViewController {
         self.networkDataFetcher.getImages(nameRover: "spirit") { [weak self] (photoResults) in
             guard let fetchedPhotos = photoResults else { return }
             self?.cameraPhotos = fetchedPhotos.photos
-            self?.cameraPhotos.map { (photo) in
-                print("URLImage: \(photo.img_src)")
-            }
+            self?.reloadData()
         }
-        
         setupCollectionView()
         createDataSource()
         reloadData()

@@ -34,9 +34,7 @@ class PhotoViewController: UIViewController {
         self.networkDataFetcher.getImages(nameRover: "spirit") { [weak self] (photoRes) in
             guard let fetchedPhotos = photoRes else { return }
             self?.photoResults = fetchedPhotos.photos
-            self?.photoResults.map { (photo) in
-                print("URLImage: \(photo.img_src)")
-            }
+            self?.reloadData()
         }
         setupCollectionView()
         createDataSource()
