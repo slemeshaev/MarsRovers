@@ -32,7 +32,7 @@ class CamerasViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.networkDataFetcher.getImages(nameRover: "spirit") { [weak self] (photoResults) in
+        self.networkDataFetcher.getImages(nameRover: "Spirit") { [weak self] (photoResults) in
             guard let fetchedPhotos = photoResults else { return }
             self?.cameraPhotos = fetchedPhotos.photos
             self?.reloadData()
@@ -82,7 +82,7 @@ class CamerasViewController: UIViewController {
         var snapshot = NSDiffableDataSourceSnapshot<Section, RoverSnapshot>()
         snapshot.appendSections([.camera1, .camera2])
         snapshot.appendItems(cameraPhotos, toSection: .camera1)
-        //snapshot.appendItems(cameraTwoImages, toSection: .camera2)
+        //snapshot.appendItems(cameraPhotos, toSection: .camera2)
         dataSource?.apply(snapshot, animatingDifferences: true)
     }
     

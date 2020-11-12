@@ -91,7 +91,7 @@
 				66050385255994B0001C0BD4 /* SceneDelegate.swift */,
 				660503A62559A418001C0BD4 /* Model */,
 				660503A72559A429001C0BD4 /* View */,
-				660503A82559A436001C0BD4 /* Controller */,
+				660503A82559A436001C0BD4 /* Controllers */,
 				660503D72559B978001C0BD4 /* Protocols */,
 				660503F5255A9849001C0BD4 /* Extensions */,
 				660503DC2559BDEC001C0BD4 /* Services */,
@@ -120,7 +120,7 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		660503A82559A436001C0BD4 /* Controller */ = {
+		660503A82559A436001C0BD4 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				6605039825599A27001C0BD4 /* MainTabViewController.swift */,
@@ -128,7 +128,7 @@
 				66050406255B0D45001C0BD4 /* PhotoViewController.swift */,
 				660503A325599D89001C0BD4 /* SettingsTableViewController.swift */,
 			);
-			path = Controller;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		660503D62559B946001C0BD4 /* Cell */ = {

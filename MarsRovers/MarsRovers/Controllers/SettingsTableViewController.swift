@@ -18,14 +18,13 @@ class SettingsTableViewController: UITableViewController {
     }()
     
     // создаем массив марсоходов
-    let rovers = ["Spirit", "Opportunity", "Curiosity", "Perseverance"]
+    let rovers = ["Spirit", "Opportunity", "Curiosity"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
 
     // MARK: - Table view data source
-    
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: tableView.frame.width, height: 50))
         let label = UILabel()
@@ -59,7 +58,8 @@ class SettingsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("Нажата строка \(indexPath.row)")
+        let rover = rovers[indexPath.row]
+        print("Название марсохода: \(rover)")
         //view.addSubview(checkmark)
     }
 
