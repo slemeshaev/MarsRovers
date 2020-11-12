@@ -46,6 +46,9 @@ class CamerasViewController: UIViewController {
     // массивы с фотками
     let cameraOneImages = Bundle.main.decode([MImage].self, from: "cameraImages.json")
     let cameraTwoImages = Bundle.main.decode([MImage].self, from: "cameraAnotherImages.json")
+    
+    // коллекция фотографий
+    private var cameraPhotos = [RoverSnapshot]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,10 +56,13 @@ class CamerasViewController: UIViewController {
         createDataSource()
         reloadData()
         
-        self.networkDataFetcher.getImages(nameRover: "spirit") { (allResults) in
-            allResults?.photos.map({ (photo) in
-                print(photo.earth_date)
-            })
+        self.networkDataFetcher.getImages(nameRover: "spirit") { [weak self] (photoResults) in
+            guard let fetchedPhotos = photoResults else { return }
+            self?.cameraPhotos = fetchedPhotos.photos
+            self?.cameraPhotos.map { (photo) in
+                print("URLImage: \(photo.img_src)")
+            }
+            //print(photoResults?.photos.count)
         }
     }
     
