@@ -7,11 +7,11 @@
 
 import Foundation
 
-struct SnapshotsResults: Decodable {
+struct SnapshotsResults: Hashable, Decodable {
     let photos: [RoverSnapshot]
 }
 
-struct RoverSnapshot: Decodable {
+struct RoverSnapshot: Hashable, Decodable {
     let id: Int
     let camera: Camera
     let img_src: String
@@ -19,14 +19,14 @@ struct RoverSnapshot: Decodable {
     let rover: Rover
 }
 
-struct Camera: Decodable {
+struct Camera: Hashable, Decodable {
     let id: Int
     let name: String
     let rover_id: Int
     let full_name: String
 }
 
-struct Rover: Decodable {
+struct Rover: Hashable, Decodable {
     let id: Int
     let name: String
 }

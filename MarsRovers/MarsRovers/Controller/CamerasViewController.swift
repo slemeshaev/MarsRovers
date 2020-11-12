@@ -8,20 +8,19 @@
 import UIKit
 
 // тестовая модель данных
-struct MImage: Hashable, Decodable {
-    var snapshot: String
-    var date: String
-    var id: Int
-    
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(id)
-    }
-    
-    static func == (lhs: MImage, rhs: MImage) -> Bool {
-        return lhs.id == rhs.id
-    }
-}
-
+//struct MImage: Hashable, Decodable {
+//    var snapshot: String
+//    var date: String
+//    var id: Int
+//
+//    func hash(into hasher: inout Hasher) {
+//        hasher.combine(id)
+//    }
+//
+//    static func == (lhs: MImage, rhs: MImage) -> Bool {
+//        return lhs.id == rhs.id
+//    }
+//}
 
 class CamerasViewController: UIViewController {
 
@@ -39,23 +38,19 @@ class CamerasViewController: UIViewController {
     }
     
     var collectionView: UICollectionView!
-    var dataSource: UICollectionViewDiffableDataSource<Section, MImage>?
+    var dataSource: UICollectionViewDiffableDataSource<Section, RoverSnapshot>?
 
     var networkDataFetcher = NetworkDataFetcher()
     
     // массивы с фотками
-    let cameraOneImages = Bundle.main.decode([MImage].self, from: "cameraImages.json")
-    let cameraTwoImages = Bundle.main.decode([MImage].self, from: "cameraAnotherImages.json")
+    //let cameraOneImages = Bundle.main.decode([MImage].self, from: "cameraImages.json")
+    //let cameraTwoImages = Bundle.main.decode([MImage].self, from: "cameraAnotherImages.json")
     
     // коллекция фотографий
     private var cameraPhotos = [RoverSnapshot]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupCollectionView()
-        createDataSource()
-        reloadData()
-        
         self.networkDataFetcher.getImages(nameRover: "spirit") { [weak self] (photoResults) in
             guard let fetchedPhotos = photoResults else { return }
             self?.cameraPhotos = fetchedPhotos.photos
@@ -63,6 +58,10 @@ class CamerasViewController: UIViewController {
                 print("URLImage: \(photo.img_src)")
             }
         }
+        
+        setupCollectionView()
+        createDataSource()
+        reloadData()
     }
     
     // метод установки collectionView
@@ -79,7 +78,7 @@ class CamerasViewController: UIViewController {
     
     //
     private func createDataSource() {
-        dataSource = UICollectionViewDiffableDataSource<Section, MImage>(collectionView: collectionView, cellProvider: { (collectionView, indexPath, image) -> UICollectionViewCell? in
+        dataSource = UICollectionViewDiffableDataSource<Section, RoverSnapshot>(collectionView: collectionView, cellProvider: { (collectionView, indexPath, image) -> UICollectionViewCell? in
             guard let section = Section(rawValue: indexPath.section) else {
                 fatalError("Неизвестный вид секции")
             }
@@ -102,10 +101,10 @@ class CamerasViewController: UIViewController {
     }
     
     private func reloadData() {
-        var snapshot = NSDiffableDataSourceSnapshot<Section, MImage>()
+        var snapshot = NSDiffableDataSourceSnapshot<Section, RoverSnapshot>()
         snapshot.appendSections([.camera1, .camera2])
-        snapshot.appendItems(cameraOneImages, toSection: .camera1)
-        snapshot.appendItems(cameraTwoImages, toSection: .camera2)
+        snapshot.appendItems(cameraPhotos, toSection: .camera1)
+        //snapshot.appendItems(cameraTwoImages, toSection: .camera2)
         dataSource?.apply(snapshot, animatingDifferences: true)
     }
     

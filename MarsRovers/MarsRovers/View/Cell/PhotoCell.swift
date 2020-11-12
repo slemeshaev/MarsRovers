@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class PhotoCell: UICollectionViewCell, SelfConfiguringCell {
     
@@ -17,9 +18,10 @@ class PhotoCell: UICollectionViewCell, SelfConfiguringCell {
     
     // метод конфигурации ячейки
     func configure<U>(with value: U) where U : Hashable {
-        guard let photo: MImage = value as? MImage else { return }
-        photoImageView.image = UIImage(named: photo.snapshot)
-        photoDate.text = photo.date
+        guard let camera: RoverSnapshot = value as? RoverSnapshot else { return }
+        let imageUrl = camera.img_src
+        photoImageView.sd_setImage(with: URL(string: imageUrl), completed: nil)
+        photoDate.text = camera.earth_date
     }
     
     override init(frame: CGRect) {

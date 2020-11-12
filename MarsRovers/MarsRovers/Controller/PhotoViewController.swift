@@ -9,9 +9,14 @@ import UIKit
 
 class PhotoViewController: UIViewController {
     
-    let allPhotos = Bundle.main.decode([MImage].self, from: "fakeImages.json")
+    // let allPhotos = Bundle.main.decode([MImage].self, from: "fakeImages.json")
     var collectionView: UICollectionView!
-    var dataSource: UICollectionViewDiffableDataSource<Section, MImage>!
+    var dataSource: UICollectionViewDiffableDataSource<Section, RoverSnapshot>!
+    
+    // коллекция фотографий
+    private var photoResults = [RoverSnapshot]()
+    
+    var networkDataFetcher = NetworkDataFetcher()
     
     enum Section: Int, CaseIterable {
         case photos
@@ -26,8 +31,12 @@ class PhotoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .purple
-        allPhotos.forEach { (photo) in
-            print(photo.date)
+        self.networkDataFetcher.getImages(nameRover: "spirit") { [weak self] (photoRes) in
+            guard let fetchedPhotos = photoRes else { return }
+            self?.photoResults = fetchedPhotos.photos
+            self?.photoResults.map { (photo) in
+                print("URLImage: \(photo.img_src)")
+            }
         }
         setupCollectionView()
         createDataSource()
@@ -48,9 +57,9 @@ class PhotoViewController: UIViewController {
     
     // reloadData
     private func reloadData() {
-        var snapshot = NSDiffableDataSourceSnapshot<Section, MImage>()
+        var snapshot = NSDiffableDataSourceSnapshot<Section, RoverSnapshot>()
         snapshot.appendSections([.photos])
-        snapshot.appendItems(allPhotos, toSection: .photos)
+        snapshot.appendItems(photoResults, toSection: .photos)
         dataSource?.apply(snapshot, animatingDifferences: true)
     }
     
@@ -59,7 +68,7 @@ class PhotoViewController: UIViewController {
 extension PhotoViewController {
     // метод createDataSource
     private func createDataSource() {
-        dataSource = UICollectionViewDiffableDataSource<Section, MImage>(collectionView: collectionView, cellProvider: { (collectionView, indexPath, photo) -> UICollectionViewCell? in
+        dataSource = UICollectionViewDiffableDataSource<Section, RoverSnapshot>(collectionView: collectionView, cellProvider: { (collectionView, indexPath, photo) -> UICollectionViewCell? in
             guard let section = Section(rawValue: indexPath.section) else {
                 fatalError("Неизвестный вид секции")
             }
