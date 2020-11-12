@@ -7,21 +7,6 @@
 
 import UIKit
 
-// тестовая модель данных
-//struct MImage: Hashable, Decodable {
-//    var snapshot: String
-//    var date: String
-//    var id: Int
-//
-//    func hash(into hasher: inout Hasher) {
-//        hasher.combine(id)
-//    }
-//
-//    static func == (lhs: MImage, rhs: MImage) -> Bool {
-//        return lhs.id == rhs.id
-//    }
-//}
-
 class CamerasViewController: UIViewController {
 
     enum Section: Int, CaseIterable {
@@ -41,10 +26,6 @@ class CamerasViewController: UIViewController {
     var dataSource: UICollectionViewDiffableDataSource<Section, RoverSnapshot>?
 
     var networkDataFetcher = NetworkDataFetcher()
-    
-    // массивы с фотками
-    //let cameraOneImages = Bundle.main.decode([MImage].self, from: "cameraImages.json")
-    //let cameraTwoImages = Bundle.main.decode([MImage].self, from: "cameraAnotherImages.json")
     
     // коллекция фотографий
     private var cameraPhotos = [RoverSnapshot]()

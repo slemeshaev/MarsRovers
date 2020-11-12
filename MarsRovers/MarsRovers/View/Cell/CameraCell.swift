@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import SDWebImage
+import Kingfisher
 
 class CameraCell: UICollectionViewCell, SelfConfiguringCell {
     
@@ -18,7 +18,6 @@ class CameraCell: UICollectionViewCell, SelfConfiguringCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        //backgroundColor = .yellow
         
         self.layer.cornerRadius = 4
         self.clipsToBounds = true
@@ -30,7 +29,7 @@ class CameraCell: UICollectionViewCell, SelfConfiguringCell {
     func configure<U>(with value: U) where U : Hashable {
         guard let camera: RoverSnapshot = value as? RoverSnapshot else { return }
         let imageUrl = camera.img_src
-        cameraImageView.sd_setImage(with: URL(string: imageUrl), completed: nil)
+        cameraImageView.kf.setImage(with: URL(string: imageUrl))
         dateLabel.text = camera.earth_date
     }
     
