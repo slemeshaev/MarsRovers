@@ -27,7 +27,6 @@ class MainTabViewController: UITabBarController {
         
         // tabbar tintcolor
         tabBar.tintColor = UIColor(red: 109/255, green: 37/255, blue: 251/255, alpha: 1)
-        
     }
     
     // метод генерации NavigationController

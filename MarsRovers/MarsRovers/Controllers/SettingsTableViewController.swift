@@ -8,7 +8,7 @@
 import UIKit
 
 class SettingsTableViewController: UITableViewController {
-
+    
     // создаем кнопку галочки
     private let checkmark: UIImageView = {
         let image = UIImage(systemName: "checkmark.circle")
@@ -26,18 +26,20 @@ class SettingsTableViewController: UITableViewController {
 
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: tableView.frame.width, height: 50))
+        let headerView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: tableView.frame.width, height: 70))
         let label = UILabel()
-        label.frame = CGRect.init(x: 15, y: 15, width: headerView.frame.width-10, height: headerView.frame.height-10)
-        label.text = "Марсоходы"
-        label.font = UIFont.boldSystemFont(ofSize: 30)
+        label.frame = CGRect.init(x: 20, y: 0, width: headerView.frame.width-10, height: headerView.frame.height-10)
+        label.numberOfLines = 0
+        let attributedText = NSMutableAttributedString(string: "ВЫБИРАЕМ\n", attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 10), NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+        attributedText.append(NSAttributedString(string: "Марсоходы", attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 30)]))
+        label.attributedText = attributedText
 
         headerView.addSubview(label)
         return headerView
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 65
+        return 70
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -60,6 +62,9 @@ class SettingsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let rover = rovers[indexPath.row]
         print("Название марсохода: \(rover)")
+        let camerasVC = CamerasViewController()
+        camerasVC.titleRover = rover
+        //navigationController?.pushViewController(camerasVC, animated: true)
         //view.addSubview(checkmark)
     }
 

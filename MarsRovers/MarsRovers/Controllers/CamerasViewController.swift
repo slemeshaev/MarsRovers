@@ -29,14 +29,17 @@ class CamerasViewController: UIViewController {
     
     // коллекция фотографий
     private var cameraPhotos = [RoverSnapshot]()
+    
+    // название марсохода
+    var titleRover: String = "Spirit"
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.networkDataFetcher.getImages(nameRover: "Spirit") { [weak self] (photoResults) in
-            guard let fetchedPhotos = photoResults else { return }
-            self?.cameraPhotos = fetchedPhotos.photos
-            self?.reloadData()
-        }
+//        self.networkDataFetcher.getImages(nameRover: titleRover) { [weak self] (photoResults) in
+//            guard let fetchedPhotos = photoResults else { return }
+//            self?.cameraPhotos = fetchedPhotos.photos
+//            self?.reloadData()
+//        }
         setupCollectionView()
         createDataSource()
         reloadData()
