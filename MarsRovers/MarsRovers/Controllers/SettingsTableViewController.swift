@@ -28,7 +28,7 @@ class SettingsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: tableView.frame.width, height: 70))
         let label = UILabel()
-        label.frame = CGRect.init(x: 20, y: 0, width: headerView.frame.width-10, height: headerView.frame.height-10)
+        label.frame = CGRect.init(x: 20, y: 10, width: headerView.frame.width-10, height: headerView.frame.height-10)
         label.numberOfLines = 0
         let attributedText = NSMutableAttributedString(string: "ВЫБИРАЕМ\n", attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 10), NSAttributedString.Key.foregroundColor: UIColor.lightGray])
         attributedText.append(NSAttributedString(string: "Марсоходы", attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 30)]))

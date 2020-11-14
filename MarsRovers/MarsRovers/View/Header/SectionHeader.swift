@@ -31,10 +31,9 @@ class SectionHeader: UICollectionReusableView {
         
         // констрейнты для контейнера
         NSLayoutConstraint.activate([
-            containerView.topAnchor.constraint(equalTo: self.topAnchor),
+            containerView.heightAnchor.constraint(equalToConstant: 200),
             containerView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            containerView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            containerView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+            containerView.trailingAnchor.constraint(equalTo: self.trailingAnchor)
         ])
         
         // устанавливаем констрейнты для заголовка

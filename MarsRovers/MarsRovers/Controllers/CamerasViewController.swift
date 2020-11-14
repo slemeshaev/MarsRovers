@@ -30,6 +30,15 @@ class CamerasViewController: UIViewController {
     // коллекция фотографий
     private var cameraPhotos = [RoverSnapshot]()
     
+    let nameLabel: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 0
+        let attributedText = NSMutableAttributedString(string: "СМОТРИМ\n", attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 10), NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+        attributedText.append(NSAttributedString(string: "Spirit", attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 30)]))
+        label.attributedText = attributedText
+        return label
+    }()
+    
     // название марсохода
     var titleRover: String = "Spirit"
 
@@ -45,12 +54,34 @@ class CamerasViewController: UIViewController {
         reloadData()
     }
     
+    // метод установки заголовка для контроллера
+    private func setupTitleCollectionView() {
+        nameLabel.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(nameLabel)
+        
+        NSLayoutConstraint.activate([
+            nameLabel.topAnchor.constraint(equalTo: view.topAnchor),
+            nameLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            nameLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            nameLabel.heightAnchor.constraint(equalToConstant: 100)
+        ])
+    }
+    
     // метод установки collectionView
     private func setupCollectionView() {
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createCompositionLayout())
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         collectionView.backgroundColor = .white
         view.addSubview(collectionView)
+        // заголовок для коллекции
+        nameLabel.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.addSubview(nameLabel)
+        // констрейнты для заголовка
+        NSLayoutConstraint.activate([
+            nameLabel.heightAnchor.constraint(equalToConstant: 80),
+            nameLabel.leadingAnchor.constraint(equalTo: collectionView.leadingAnchor, constant: 10),
+            nameLabel.trailingAnchor.constraint(equalTo: collectionView.trailingAnchor, constant: 10)
+        ])
         // регистрация заголовка
         collectionView.register(SectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SectionHeader.reuseId)
         // регистрация ячейки
@@ -99,11 +130,11 @@ class CamerasViewController: UIViewController {
             let groupSize = NSCollectionLayoutSize(widthDimension: .absolute(160),
                                                    heightDimension: .absolute(130))
             let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
-            group.contentInsets = NSDirectionalEdgeInsets.init(top: 0, leading: 10, bottom: 8, trailing: 0)
+            group.contentInsets = NSDirectionalEdgeInsets.init(top: 0, leading: 0, bottom: 8, trailing: 0)
             // секция
             let section = NSCollectionLayoutSection(group: group)
             section.interGroupSpacing = 16
-            section.contentInsets = NSDirectionalEdgeInsets.init(top: 10, leading: 10, bottom: 0, trailing: 10)
+            section.contentInsets = NSDirectionalEdgeInsets.init(top: 120, leading: 10, bottom: -100, trailing: 10)
             section.orthogonalScrollingBehavior = .continuous
             // заголовок
             let sectionHeaderSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
