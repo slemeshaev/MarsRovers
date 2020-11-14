@@ -34,17 +34,14 @@ class CamerasViewController: UIViewController {
         let label = UILabel()
         label.numberOfLines = 0
         let attributedText = NSMutableAttributedString(string: "СМОТРИМ\n", attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 10), NSAttributedString.Key.foregroundColor: UIColor.lightGray])
-        attributedText.append(NSAttributedString(string: "Spirit", attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 30)]))
+        attributedText.append(NSAttributedString(string: API.rovers[0], attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 30)]))
         label.attributedText = attributedText
         return label
     }()
-    
-    // название марсохода
-    var titleRover: String = "Spirit"
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.networkDataFetcher.getImages(nameRover: titleRover, cameraName: API.cameras[0]) { [weak self] (photoResults) in
+        self.networkDataFetcher.getImages(nameRover: API.rovers[0], cameraName: API.cameras[0]) { [weak self] (photoResults) in
             guard let fetchedPhotos = photoResults else { return }
             self?.cameraPhotos = fetchedPhotos.photos
             self?.reloadData()

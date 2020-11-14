@@ -17,9 +17,6 @@ class SettingsTableViewController: UITableViewController {
         return imageView
     }()
     
-    // создаем массив марсоходов
-    let rovers = ["Spirit", "Opportunity", "Curiosity"]
-    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -43,7 +40,7 @@ class SettingsTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return rovers.count
+        return API.rovers.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -52,7 +49,7 @@ class SettingsTableViewController: UITableViewController {
         // получаем ячейку из пула
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         // получаем марсоход конкретной строки
-        let rover = rovers[indexPath.row]
+        let rover = API.rovers[indexPath.row]
         // устанавливаем марсоход в надпись ячейки
         cell.textLabel?.text = rover
         self.navigationItem.title = "Настройки"
@@ -60,10 +57,10 @@ class SettingsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let rover = rovers[indexPath.row]
+        let rover = API.rovers[indexPath.row]
         print("Название марсохода: \(rover)")
         let camerasVC = CamerasViewController()
-        camerasVC.titleRover = rover
+        camerasVC.nameLabel.text = rover
         //navigationController?.pushViewController(camerasVC, animated: true)
         //view.addSubview(checkmark)
     }
