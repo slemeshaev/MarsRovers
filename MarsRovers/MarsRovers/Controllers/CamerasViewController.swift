@@ -35,7 +35,7 @@ class CamerasViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.networkDataFetcher.getImages(nameRover: self.titleRover, cameraName: API.cameras[0]) { [weak self] (photoResults) in
+        self.networkDataFetcher.getImages(nameRover: titleRover, cameraName: API.cameras[0]) { [weak self] (photoResults) in
             guard let fetchedPhotos = photoResults else { return }
             self?.cameraPhotos = fetchedPhotos.photos
             self?.reloadData()
@@ -84,7 +84,7 @@ class CamerasViewController: UIViewController {
         var snapshot = NSDiffableDataSourceSnapshot<Section, RoverSnapshot>()
         snapshot.appendSections([.navcam, .pancam])
         snapshot.appendItems(cameraPhotos, toSection: .navcam)
-        snapshot.appendItems(cameraPhotos, toSection: .pancam)
+        //snapshot.appendItems(cameraPhotos, toSection: .pancam)
         dataSource?.apply(snapshot, animatingDifferences: true)
     }
     

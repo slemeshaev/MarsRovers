@@ -30,7 +30,7 @@ class CameraCell: UICollectionViewCell, SelfConfiguringCell {
         guard let camera: RoverSnapshot = value as? RoverSnapshot else { return }
         let imageUrl = camera.img_src
         cameraImageView.kf.setImage(with: URL(string: imageUrl))
-        dateLabel.text = camera.earth_date
+        dateLabel.text = convertDateToDesiredFormat(nameDate: camera.earth_date)
     }
     
     // метод установки констрейнтов
@@ -53,6 +53,28 @@ class CameraCell: UICollectionViewCell, SelfConfiguringCell {
             dateLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             dateLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ])
+    }
+    
+    // функция конвертации даты в нужный формат
+    func convertDateToDesiredFormat(nameDate: String) -> String {
+        var dateComponents = DateComponents()
+        
+        let day = nameDate[8..<nameDate.count]
+        dateComponents.day = Int(day)
+        let month = nameDate[5..<nameDate.count-3]
+        dateComponents.month = Int(month)
+        let year = nameDate[0..<nameDate.count-6]
+        dateComponents.year = Int(year)
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "ru_Ru")
+        dateFormatter.dateFormat = "d MMMM Y"
+        
+        let calenader = Calendar.current
+        guard let date = calenader.date(from: dateComponents) else {
+            return "Ошибка в получении даты!"
+        }
+        return dateFormatter.string(from: date)
     }
     
     required init?(coder: NSCoder) {
