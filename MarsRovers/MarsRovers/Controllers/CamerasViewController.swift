@@ -96,8 +96,8 @@ class CamerasViewController: UIViewController {
                                                   heightDimension: .fractionalHeight(1))
             let item = NSCollectionLayoutItem(layoutSize: itemSize)
             // группа
-            let groupSize = NSCollectionLayoutSize(widthDimension: .absolute(120),
-                                                   heightDimension: .absolute(100))
+            let groupSize = NSCollectionLayoutSize(widthDimension: .absolute(160),
+                                                   heightDimension: .absolute(130))
             let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
             group.contentInsets = NSDirectionalEdgeInsets.init(top: 0, leading: 10, bottom: 8, trailing: 0)
             // секция

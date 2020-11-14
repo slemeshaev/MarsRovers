@@ -44,11 +44,11 @@ class CameraCell: UICollectionViewCell, SelfConfiguringCell {
             cameraImageView.topAnchor.constraint(equalTo: self.topAnchor),
             cameraImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             cameraImageView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            cameraImageView.heightAnchor.constraint(equalToConstant: 75)
+            cameraImageView.heightAnchor.constraint(equalToConstant: 100)
         ])
         
         NSLayoutConstraint.activate([
-            dateLabel.heightAnchor.constraint(equalToConstant: 10),
+            dateLabel.heightAnchor.constraint(equalToConstant: 15),
             dateLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             dateLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             dateLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor)
