@@ -30,11 +30,11 @@ class PhotoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .purple
-//        self.networkDataFetcher.getImages(nameRover: "spirit") { [weak self] (photoRes) in
-//            guard let fetchedPhotos = photoRes else { return }
-//            self?.photoResults = fetchedPhotos.photos
-//            self?.reloadData()
-//        }
+        self.networkDataFetcher.getImages(nameRover: "spirit", cameraName: "navcam") { [weak self] (photoRes) in
+            guard let fetchedPhotos = photoRes else { return }
+            self?.photoResults = fetchedPhotos.photos
+            self?.reloadData()
+        }
         setupCollectionView()
         createDataSource()
         reloadData()

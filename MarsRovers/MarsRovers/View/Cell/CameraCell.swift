@@ -55,6 +55,13 @@ class CameraCell: UICollectionViewCell, SelfConfiguringCell {
         ])
     }
     
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+}
+
+extension CameraCell {
     // функция конвертации даты в нужный формат
     func convertDateToDesiredFormat(nameDate: String) -> String {
         var dateComponents = DateComponents()
@@ -76,10 +83,4 @@ class CameraCell: UICollectionViewCell, SelfConfiguringCell {
         }
         return dateFormatter.string(from: date)
     }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
 }
-
