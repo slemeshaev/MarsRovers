@@ -11,5 +11,7 @@ struct API {
     static let scheme = "https"
     static let host = "api.nasa.gov"
     
+    static let cameras: [String] = ["navcam", "pancam"]
+    
     static let apiKey = "qQ8p4YgPBeybqyN9Qu6SmMGNW9060AzEqabNrqtb"
 }

@@ -12,8 +12,8 @@ class NetworkDataFetcher {
     var networkService = NetworkService()
     
     // метод получения картинок
-    func getImages(nameRover: String, completion: @escaping (SnapshotsResults?) -> ()) {
-        networkService.request(nameRover: nameRover) { (data, error) in
+    func getImages(nameRover: String, cameraName: String, completion: @escaping (SnapshotsResults?) -> ()) {
+        networkService.request(nameRover: nameRover, cameraName: cameraName) { (data, error) in
             if let error = error {
                 print("Получение данных завершилось ошибкой \(error.localizedDescription)")
                 completion(nil)

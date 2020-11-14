@@ -10,8 +10,8 @@ import Foundation
 class NetworkService {
     
     // построение запроса данных по URL
-    func request(nameRover: String, completion: @escaping (Data?, Error?) -> Void) {
-        let parameters = self.prepareParameters()
+    func request(nameRover: String, cameraName: String, completion: @escaping (Data?, Error?) -> Void) {
+        let parameters = self.prepareParameters(cameraName: cameraName)
         let url = self.url(nameRover: nameRover, params: parameters)
         let request = URLRequest(url: url)
         let task = createDataTask(from: request, completion: completion)
@@ -19,10 +19,11 @@ class NetworkService {
     }
     
     // метод создания параметров
-    private func prepareParameters() -> [String: String] {
+    private func prepareParameters(cameraName: String) -> [String: String] {
         var parameters = [String: String]()
         parameters["sol"] = String(1000)
         parameters["page"] = String(1)
+        parameters["camera"] = cameraName
         parameters["api_key"] = API.apiKey
         return parameters
     }

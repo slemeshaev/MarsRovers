@@ -10,13 +10,13 @@ import UIKit
 class CamerasViewController: UIViewController {
 
     enum Section: Int, CaseIterable {
-        case camera1, camera2
+        case navcam, pancam
         
         func description() -> String {
             switch self {
-            case .camera1:
+            case .navcam:
                 return "Камера 1"
-            case .camera2:
+            case .pancam:
                 return "Камера 2"
             }
         }
@@ -35,7 +35,7 @@ class CamerasViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.networkDataFetcher.getImages(nameRover: titleRover) { [weak self] (photoResults) in
+        self.networkDataFetcher.getImages(nameRover: self.titleRover, cameraName: API.cameras[0]) { [weak self] (photoResults) in
             guard let fetchedPhotos = photoResults else { return }
             self?.cameraPhotos = fetchedPhotos.photos
             self?.reloadData()
@@ -64,9 +64,9 @@ class CamerasViewController: UIViewController {
                 fatalError("Неизвестный вид секции")
             }
             switch section {
-            case .camera1:
+            case .navcam:
                 return self.configure(collectionView: collectionView, cellType: CameraCell.self, with: image, for: indexPath)
-            case .camera2:
+            case .pancam:
                 return self.configure(collectionView: collectionView, cellType: CameraCell.self, with: image, for: indexPath)
             }
         })
@@ -82,9 +82,9 @@ class CamerasViewController: UIViewController {
     
     private func reloadData() {
         var snapshot = NSDiffableDataSourceSnapshot<Section, RoverSnapshot>()
-        snapshot.appendSections([.camera1, .camera2])
-        snapshot.appendItems(cameraPhotos, toSection: .camera1)
-        //snapshot.appendItems(cameraPhotos, toSection: .camera2)
+        snapshot.appendSections([.navcam, .pancam])
+        snapshot.appendItems(cameraPhotos, toSection: .navcam)
+        snapshot.appendItems(cameraPhotos, toSection: .pancam)
         dataSource?.apply(snapshot, animatingDifferences: true)
     }
     
