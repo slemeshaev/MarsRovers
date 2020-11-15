@@ -9,7 +9,6 @@ import UIKit
 
 class CamerasViewController: UIViewController {
 
-    //cameras = ["FHAZ", "RHAZ", "MAST", "CHEMCAM", "MAHLI", "MARDI", "NAVCAM", "PANCAM", "MINITES"]
     enum Section: Int, CaseIterable {
         case fhaz, rhaz, mast, chemcam, mahli, mardi, navcam, pancam, minites
         
@@ -46,11 +45,14 @@ class CamerasViewController: UIViewController {
     private var cameras: [Camera] = []
     private var sorted: [String: [RoverSnapshot]] = [:]
     
-    let nameLabel: UILabel = {
+    // имя марсохода
+    var nameRover: String = API.rovers[0]
+    
+    lazy var nameLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
         let attributedText = NSMutableAttributedString(string: "СМОТРИМ\n", attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 10), NSAttributedString.Key.foregroundColor: UIColor.lightGray])
-        attributedText.append(NSAttributedString(string: API.rovers[2], attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 30)]))
+        attributedText.append(NSAttributedString(string: nameRover, attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 30)]))
         label.attributedText = attributedText
         return label
     }()
@@ -59,7 +61,11 @@ class CamerasViewController: UIViewController {
         super.viewDidLoad()
         setupCollectionView()
         createDataSource()
-        self.networkDataFetcher.getImages(nameRover: API.rovers[2], cameraName: "") { [weak self] (result) in
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        NotificationCenter.default.addObserver(self, selector: #selector(gotNotificationIndex), name: Notification.Name(rawValue: "notificationFromSettingsVC"), object: nil)
+        self.networkDataFetcher.getImages(nameRover: nameRover, cameraName: "") { [weak self] (result) in
             guard let result = result else { return }
             var cameras: Set<Camera> = []
             var sorted: [String: [RoverSnapshot]] = [:]
@@ -76,6 +82,12 @@ class CamerasViewController: UIViewController {
             self?.sorted = sorted
             self?.reloadData()
         }
+    }
+    
+    // получение индекса
+    @objc func gotNotificationIndex(notification: Notification) {
+        guard let userInfo = notification.userInfo, let rover = userInfo["name"] as? String else { return }
+        nameRover = rover
     }
     
     // метод установки заголовка для контроллера
