@@ -20,18 +20,13 @@ class PhotoViewController: UIViewController {
     
     enum Section: Int, CaseIterable {
         case photos
-        func description() -> String {
-            switch self {
-            case .photos:
-                return "Spirit"
-            }
-        }
     }
     
     init(camera: Camera) {
         self.camera = camera
         super.init(nibName: nil, bundle: nil)
     }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -39,14 +34,13 @@ class PhotoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .purple
-        self.networkDataFetcher.getImages(nameRover: "spirit", cameraName: "navcam") { [weak self] (photoRes) in
+        self.networkDataFetcher.getImages(nameRover: "Curiosity", cameraName: camera.name) { [weak self] (photoRes) in
             guard let fetchedPhotos = photoRes else { return }
             self?.photoResults = fetchedPhotos.photos
             self?.reloadData()
         }
         setupCollectionView()
         createDataSource()
-        reloadData()
     }
     
     // установка collectionView

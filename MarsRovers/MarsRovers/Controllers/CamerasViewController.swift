@@ -25,7 +25,7 @@ class CamerasViewController: UIViewController {
     // имя марсохода
     var nameRover: String = API.rovers[0]
     var nameLabel = UILabel()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         nameLabel.text = nameRover
@@ -55,7 +55,7 @@ class CamerasViewController: UIViewController {
         }
     }
     
-    // получение индекса
+    // получение имени массива
     @objc func gotNotificationIndex(notification: Notification) {
         guard let userInfo = notification.userInfo, let rover = userInfo["name"] as? String else { return }
         nameLabel.text = rover
@@ -150,6 +150,7 @@ extension CamerasViewController: UICollectionViewDelegateFlowLayout {
 
 extension CamerasViewController: HeaderDelegate {
     func did(select camera: Camera) {
-        print(camera)
+        let photoVC = PhotoViewController(camera: camera)
+        navigationController?.pushViewController(photoVC, animated: true)
     }
 }
