@@ -47,18 +47,12 @@ class CamerasViewController: UIViewController {
     
     // имя марсохода
     var nameRover: String = API.rovers[0]
-    
-    lazy var nameLabel: UILabel = {
-        let label = UILabel()
-        label.numberOfLines = 0
-        let attributedText = NSMutableAttributedString(string: "СМОТРИМ\n", attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 10), NSAttributedString.Key.foregroundColor: UIColor.lightGray])
-        attributedText.append(NSAttributedString(string: nameRover, attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 30)]))
-        label.attributedText = attributedText
-        return label
-    }()
+    var nameLabel = UILabel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        nameLabel.text = nameRover
+        nameLabel.font = UIFont.boldSystemFont(ofSize: 30.0)
         setupCollectionView()
         createDataSource()
     }
@@ -87,12 +81,14 @@ class CamerasViewController: UIViewController {
     // получение индекса
     @objc func gotNotificationIndex(notification: Notification) {
         guard let userInfo = notification.userInfo, let rover = userInfo["name"] as? String else { return }
+        nameLabel.text = rover
         nameRover = rover
     }
     
     // метод установки заголовка для контроллера
     private func setupTitleCollectionView() {
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
+        
         view.addSubview(nameLabel)
         
         NSLayoutConstraint.activate([
