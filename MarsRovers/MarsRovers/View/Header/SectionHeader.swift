@@ -7,17 +7,38 @@
 
 import UIKit
 
+protocol HeaderDelegate: class {
+    func did(select camera: Camera)
+}
+
 class SectionHeader: UICollectionReusableView {
     
     static let reuseId = "SectionHeader"
+    
+    private var camera: Camera? {
+        didSet {
+            titleHeader.text = camera?.name ?? ""
+            titleHeader.font = .boldSystemFont(ofSize: 20)
+        }
+    }
+    
+    private weak var delegate: HeaderDelegate?
     
     let containerView = UIView()
     let titleHeader = UILabel()
     let buttonArrow = UIButton()
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        camera = nil
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
+        setupConstraints()
+    }
+    
+    private func setupConstraints() {
         containerView.translatesAutoresizingMaskIntoConstraints = false
         titleHeader.translatesAutoresizingMaskIntoConstraints = false
         buttonArrow.translatesAutoresizingMaskIntoConstraints = false
@@ -31,9 +52,10 @@ class SectionHeader: UICollectionReusableView {
         
         // констрейнты для контейнера
         NSLayoutConstraint.activate([
-            containerView.heightAnchor.constraint(equalToConstant: 200),
-            containerView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            containerView.trailingAnchor.constraint(equalTo: self.trailingAnchor)
+            containerView.topAnchor.constraint(equalTo: topAnchor),
+            containerView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            containerView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            containerView.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
         
         // устанавливаем констрейнты для заголовка
@@ -41,13 +63,12 @@ class SectionHeader: UICollectionReusableView {
             titleHeader.topAnchor.constraint(equalTo: containerView.topAnchor),
             titleHeader.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
             titleHeader.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
-            titleHeader.widthAnchor.constraint(equalToConstant: 100)
         ])
         
         // устанавливаем констрейнты для кнопки
         NSLayoutConstraint.activate([
             buttonArrow.topAnchor.constraint(equalTo: containerView.topAnchor),
-            buttonArrow.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 100),
+            buttonArrow.leadingAnchor.constraint(equalTo: titleHeader.trailingAnchor, constant: 16),
             buttonArrow.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
             buttonArrow.widthAnchor.constraint(equalToConstant: 20)
         ])
@@ -55,16 +76,17 @@ class SectionHeader: UICollectionReusableView {
     
     // функция показать фотографии
     @objc func showAllPhotos() {
-        print("Сделать переход на PhotoViewController")
-//        let camerasVC = CamerasViewController()
-//        let photoVC = PhotoViewController()
-//        camerasVC.navigationController?.pushViewController(photoVC, animated: true)
+        guard let camera = camera else {
+            print("camera header serror")
+            return
+        }
+        delegate?.did(select: camera)
     }
     
     // метод конфигурации ячейки
-    func configure(text: String, font: UIFont?) {
-        titleHeader.text = text
-        titleHeader.font = font
+    func configure(camera: Camera, delegate: HeaderDelegate) {
+        self.delegate = delegate
+        self.camera = camera
     }
     
     required init?(coder: NSCoder) {

@@ -11,29 +11,6 @@ class CamerasViewController: UIViewController {
 
     enum Section: Int, CaseIterable {
         case fhaz, rhaz, mast, chemcam, mahli, mardi, navcam, pancam, minites
-        
-        func description() -> String {
-            switch self {
-            case .fhaz:
-                return "Камера 1"
-            case .rhaz:
-                return "Камера 2"
-            case .mast:
-                return "Камера 3"
-            case .chemcam:
-                return "Камера 4"
-            case .mahli:
-                return "Камера 5"
-            case .mardi:
-                return "Камера 6"
-            case .navcam:
-                return "Камера 7"
-            case .pancam:
-                return "Камера 8"
-            case .minites:
-                return "Камера 9"
-            }
-        }
     }
     
     var collectionView: UICollectionView!
@@ -85,20 +62,6 @@ class CamerasViewController: UIViewController {
         nameRover = rover
     }
     
-    // метод установки заголовка для контроллера
-    private func setupTitleCollectionView() {
-        nameLabel.translatesAutoresizingMaskIntoConstraints = false
-        
-        view.addSubview(nameLabel)
-        
-        NSLayoutConstraint.activate([
-            nameLabel.topAnchor.constraint(equalTo: view.topAnchor),
-            nameLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            nameLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            nameLabel.heightAnchor.constraint(equalToConstant: 100)
-        ])
-    }
-    
     // метод установки collectionView
     private func setupCollectionView() {
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createCompositionLayout())
@@ -106,14 +69,14 @@ class CamerasViewController: UIViewController {
         collectionView.backgroundColor = .white
         view.addSubview(collectionView)
         // заголовок для коллекции
-        nameLabel.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.addSubview(nameLabel)
+        //nameLabel.translatesAutoresizingMaskIntoConstraints = false
+        //collectionView.addSubview(nameLabel)
         // констрейнты для заголовка
-        NSLayoutConstraint.activate([
-            nameLabel.heightAnchor.constraint(equalToConstant: 80),
-            nameLabel.leadingAnchor.constraint(equalTo: collectionView.leadingAnchor, constant: 10),
-            nameLabel.trailingAnchor.constraint(equalTo: collectionView.trailingAnchor, constant: 10)
-        ])
+//        NSLayoutConstraint.activate([
+//            nameLabel.heightAnchor.constraint(equalToConstant: 80),
+//            nameLabel.leadingAnchor.constraint(equalTo: collectionView.leadingAnchor, constant: 10),
+//            nameLabel.trailingAnchor.constraint(equalTo: collectionView.trailingAnchor, constant: 10)
+//        ])
         // регистрация заголовка
         collectionView.register(SectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SectionHeader.reuseId)
         // регистрация ячейки
@@ -123,21 +86,13 @@ class CamerasViewController: UIViewController {
     // метод создания createDataSource
     private func createDataSource() {
         dataSource = UICollectionViewDiffableDataSource<String, RoverSnapshot>(collectionView: collectionView, cellProvider: { (collectionView, indexPath, image) -> UICollectionViewCell? in
-            guard let section = Section(rawValue: indexPath.section) else {
-                fatalError("Неизвестный вид секции")
-            }
-            switch section {
-            
-            case .fhaz, .rhaz, .mast, .chemcam, .mahli, .mardi, .navcam, .pancam, .minites:
-                return self.configure(collectionView: collectionView, cellType: CameraCell.self, with: image, for: indexPath)
-            }
+            return self.configure(collectionView: collectionView, cellType: CameraCell.self, with: image, for: indexPath)
         })
         dataSource?.supplementaryViewProvider = {
             collectionView, kind, indexPath in
-            guard let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SectionHeader.reuseId, for: indexPath) as? SectionHeader else { fatalError("Невозможно создать header") }
-            guard let section = Section(rawValue: indexPath.section) else { fatalError("Неизвестный вид секции") }
-            sectionHeader.configure(text: section.description(), font: .boldSystemFont(ofSize: 20))
-            self.navigationItem.title = "Камеры"
+            guard let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SectionHeader.reuseId, for: indexPath) as? SectionHeader,
+                  let camera = self.cameras.first(where: {$0.name == Array(self.sorted.keys).sorted()[indexPath.section]}) else { return nil }
+            sectionHeader.configure(camera: camera, delegate: self)
             return sectionHeader
         }
     }
@@ -163,11 +118,11 @@ class CamerasViewController: UIViewController {
             let groupSize = NSCollectionLayoutSize(widthDimension: .absolute(160),
                                                    heightDimension: .absolute(130))
             let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
-            group.contentInsets = NSDirectionalEdgeInsets.init(top: 0, leading: 0, bottom: 8, trailing: 0)
+            group.contentInsets = NSDirectionalEdgeInsets.init(top: 0, leading: 0, bottom: 0, trailing: 0)
             // секция
             let section = NSCollectionLayoutSection(group: group)
             section.interGroupSpacing = 16
-            section.contentInsets = NSDirectionalEdgeInsets.init(top: 120, leading: 10, bottom: -100, trailing: 10)
+            section.contentInsets = NSDirectionalEdgeInsets.init(top: 0, leading: 20, bottom: 0, trailing: 20)
             section.orthogonalScrollingBehavior = .continuous
             // заголовок
             let sectionHeaderSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
@@ -190,5 +145,11 @@ class CamerasViewController: UIViewController {
 extension CamerasViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize.init(width: view.frame.width, height: 64)
+    }
+}
+
+extension CamerasViewController: HeaderDelegate {
+    func did(select camera: Camera) {
+        print(camera)
     }
 }

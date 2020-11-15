@@ -13,6 +13,7 @@ class PhotoViewController: UIViewController {
     var dataSource: UICollectionViewDiffableDataSource<Section, RoverSnapshot>!
     
     // коллекция фотографий
+    private let camera: Camera
     private var photoResults = [RoverSnapshot]()
     
     var networkDataFetcher = NetworkDataFetcher()
@@ -25,6 +26,14 @@ class PhotoViewController: UIViewController {
                 return "Spirit"
             }
         }
+    }
+    
+    init(camera: Camera) {
+        self.camera = camera
+        super.init(nibName: nil, bundle: nil)
+    }
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func viewDidLoad() {
@@ -78,8 +87,7 @@ extension PhotoViewController {
         dataSource?.supplementaryViewProvider = {
             collectionView, kind, indexPath in
             guard let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SectionHeader.reuseId, for: indexPath) as? SectionHeader else { fatalError("Невозможно создать header") }
-            guard let section = Section(rawValue: indexPath.section) else { fatalError("Неизвестный вид секции") }
-            sectionHeader.configure(text: section.description(), font: .boldSystemFont(ofSize: 40))
+            sectionHeader.configure(camera: self.camera, delegate: self)
             self.navigationItem.title = "Камеры"
             return sectionHeader
         }
@@ -130,4 +138,10 @@ extension PhotoViewController {
         return section
     }
     
+}
+
+extension PhotoViewController: HeaderDelegate {
+    func did(select camera: Camera) {
+        print(camera)
+    }
 }
