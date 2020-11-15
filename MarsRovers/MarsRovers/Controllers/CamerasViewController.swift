@@ -128,23 +128,7 @@ class CamerasViewController: UIViewController {
             }
             switch section {
             
-            case .fhaz:
-                return self.configure(collectionView: collectionView, cellType: CameraCell.self, with: image, for: indexPath)
-            case .rhaz:
-                return self.configure(collectionView: collectionView, cellType: CameraCell.self, with: image, for: indexPath)
-            case .mast:
-                return self.configure(collectionView: collectionView, cellType: CameraCell.self, with: image, for: indexPath)
-            case .chemcam:
-                return self.configure(collectionView: collectionView, cellType: CameraCell.self, with: image, for: indexPath)
-            case .mahli:
-                return self.configure(collectionView: collectionView, cellType: CameraCell.self, with: image, for: indexPath)
-            case .mardi:
-                return self.configure(collectionView: collectionView, cellType: CameraCell.self, with: image, for: indexPath)
-            case .navcam:
-                return self.configure(collectionView: collectionView, cellType: CameraCell.self, with: image, for: indexPath)
-            case .pancam:
-                return self.configure(collectionView: collectionView, cellType: CameraCell.self, with: image, for: indexPath)
-            case .minites:
+            case .fhaz, .rhaz, .mast, .chemcam, .mahli, .mardi, .navcam, .pancam, .minites:
                 return self.configure(collectionView: collectionView, cellType: CameraCell.self, with: image, for: indexPath)
             }
         })

@@ -51,7 +51,6 @@ class SectionHeader: UICollectionReusableView {
             buttonArrow.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
             buttonArrow.widthAnchor.constraint(equalToConstant: 20)
         ])
-        
     }
     
     // функция показать фотографии
