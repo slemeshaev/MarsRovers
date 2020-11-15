@@ -9,15 +9,30 @@ import UIKit
 
 class CamerasViewController: UIViewController {
 
+    //cameras = ["FHAZ", "RHAZ", "MAST", "CHEMCAM", "MAHLI", "MARDI", "NAVCAM", "PANCAM", "MINITES"]
     enum Section: Int, CaseIterable {
-        case navcam, pancam
+        case fhaz, rhaz, mast, chemcam, mahli, mardi, navcam, pancam, minites
         
         func description() -> String {
             switch self {
-            case .navcam:
+            case .fhaz:
                 return "Камера 1"
-            case .pancam:
+            case .rhaz:
                 return "Камера 2"
+            case .mast:
+                return "Камера 3"
+            case .chemcam:
+                return "Камера 4"
+            case .mahli:
+                return "Камера 5"
+            case .mardi:
+                return "Камера 6"
+            case .navcam:
+                return "Камера 7"
+            case .pancam:
+                return "Камера 8"
+            case .minites:
+                return "Камера 9"
             }
         }
     }
@@ -35,7 +50,7 @@ class CamerasViewController: UIViewController {
         let label = UILabel()
         label.numberOfLines = 0
         let attributedText = NSMutableAttributedString(string: "СМОТРИМ\n", attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 10), NSAttributedString.Key.foregroundColor: UIColor.lightGray])
-        attributedText.append(NSAttributedString(string: API.rovers[0], attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 30)]))
+        attributedText.append(NSAttributedString(string: API.rovers[2], attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 30)]))
         label.attributedText = attributedText
         return label
     }()
@@ -44,7 +59,7 @@ class CamerasViewController: UIViewController {
         super.viewDidLoad()
         setupCollectionView()
         createDataSource()
-        self.networkDataFetcher.getImages(nameRover: API.rovers[1], cameraName: "") { [weak self] (result) in
+        self.networkDataFetcher.getImages(nameRover: API.rovers[2], cameraName: "") { [weak self] (result) in
             guard let result = result else { return }
             var cameras: Set<Camera> = []
             var sorted: [String: [RoverSnapshot]] = [:]
@@ -104,9 +119,24 @@ class CamerasViewController: UIViewController {
                 fatalError("Неизвестный вид секции")
             }
             switch section {
+            
+            case .fhaz:
+                return self.configure(collectionView: collectionView, cellType: CameraCell.self, with: image, for: indexPath)
+            case .rhaz:
+                return self.configure(collectionView: collectionView, cellType: CameraCell.self, with: image, for: indexPath)
+            case .mast:
+                return self.configure(collectionView: collectionView, cellType: CameraCell.self, with: image, for: indexPath)
+            case .chemcam:
+                return self.configure(collectionView: collectionView, cellType: CameraCell.self, with: image, for: indexPath)
+            case .mahli:
+                return self.configure(collectionView: collectionView, cellType: CameraCell.self, with: image, for: indexPath)
+            case .mardi:
+                return self.configure(collectionView: collectionView, cellType: CameraCell.self, with: image, for: indexPath)
             case .navcam:
                 return self.configure(collectionView: collectionView, cellType: CameraCell.self, with: image, for: indexPath)
             case .pancam:
+                return self.configure(collectionView: collectionView, cellType: CameraCell.self, with: image, for: indexPath)
+            case .minites:
                 return self.configure(collectionView: collectionView, cellType: CameraCell.self, with: image, for: indexPath)
             }
         })
