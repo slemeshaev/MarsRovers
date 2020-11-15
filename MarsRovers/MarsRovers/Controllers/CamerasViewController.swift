@@ -23,12 +23,13 @@ class CamerasViewController: UIViewController {
     }
     
     var collectionView: UICollectionView!
-    var dataSource: UICollectionViewDiffableDataSource<Section, RoverSnapshot>?
+    var dataSource: UICollectionViewDiffableDataSource<String, RoverSnapshot>?
 
     var networkDataFetcher = NetworkDataFetcher()
-    
+
     // коллекция фотографий
-    private var cameraPhotos = [RoverSnapshot]()
+    private var cameras: [Camera] = []
+    private var sorted: [String: [RoverSnapshot]] = [:]
     
     let nameLabel: UILabel = {
         let label = UILabel()
@@ -41,14 +42,25 @@ class CamerasViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.networkDataFetcher.getImages(nameRover: API.rovers[0], cameraName: API.cameras[0]) { [weak self] (photoResults) in
-            guard let fetchedPhotos = photoResults else { return }
-            self?.cameraPhotos = fetchedPhotos.photos
-            self?.reloadData()
-        }
         setupCollectionView()
         createDataSource()
-        reloadData()
+        self.networkDataFetcher.getImages(nameRover: API.rovers[1], cameraName: "") { [weak self] (result) in
+            guard let result = result else { return }
+            var cameras: Set<Camera> = []
+            var sorted: [String: [RoverSnapshot]] = [:]
+            result.photos.forEach {
+                cameras.insert($0.camera)
+                if var photos = sorted[$0.camera.name] {
+                    photos.append($0)
+                    sorted[$0.camera.name] = photos
+                } else {
+                    sorted[$0.camera.name] = [$0]
+                }
+            }
+            self?.cameras = Array(cameras)
+            self?.sorted = sorted
+            self?.reloadData()
+        }
     }
     
     // метод установки заголовка для контроллера
@@ -87,7 +99,7 @@ class CamerasViewController: UIViewController {
     
     // метод создания createDataSource
     private func createDataSource() {
-        dataSource = UICollectionViewDiffableDataSource<Section, RoverSnapshot>(collectionView: collectionView, cellProvider: { (collectionView, indexPath, image) -> UICollectionViewCell? in
+        dataSource = UICollectionViewDiffableDataSource<String, RoverSnapshot>(collectionView: collectionView, cellProvider: { (collectionView, indexPath, image) -> UICollectionViewCell? in
             guard let section = Section(rawValue: indexPath.section) else {
                 fatalError("Неизвестный вид секции")
             }
@@ -109,10 +121,12 @@ class CamerasViewController: UIViewController {
     }
     
     private func reloadData() {
-        var snapshot = NSDiffableDataSourceSnapshot<Section, RoverSnapshot>()
-        snapshot.appendSections([.navcam, .pancam])
-        snapshot.appendItems(cameraPhotos, toSection: .navcam)
-        //snapshot.appendItems(cameraPhotos, toSection: .pancam)
+        var snapshot = NSDiffableDataSourceSnapshot<String, RoverSnapshot>()
+        let cameras = Array(sorted.keys).sorted()
+        snapshot.appendSections(cameras)
+        cameras.forEach {
+            snapshot.appendItems(sorted[$0] ?? [], toSection: $0)
+        }
         dataSource?.apply(snapshot, animatingDifferences: true)
     }
     

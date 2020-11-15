@@ -22,8 +22,9 @@ class NetworkService {
     private func prepareParameters(cameraName: String) -> [String: String] {
         var parameters = [String: String]()
         parameters["sol"] = String(1000)
-        parameters["page"] = String(1)
-        parameters["camera"] = cameraName
+        if cameraName != "" {
+            parameters["camera"] = cameraName
+        }
         parameters["api_key"] = API.apiKey
         return parameters
     }

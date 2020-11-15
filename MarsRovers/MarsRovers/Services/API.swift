@@ -12,7 +12,7 @@ struct API {
     static let host = "api.nasa.gov"
     
     static let rovers = ["Spirit", "Opportunity", "Curiosity"]
-    static let cameras = ["navcam", "pancam"]
+    static let cameras = ["FHAZ", "RHAZ", "MAST", "CHEMCAM", "MAHLI", "MARDI", "NAVCAM", "PANCAM", "MINITES"]
     
     static let apiKey = "qQ8p4YgPBeybqyN9Qu6SmMGNW9060AzEqabNrqtb"
 }
