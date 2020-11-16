@@ -35,7 +35,7 @@ class CamerasViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        NotificationCenter.default.addObserver(self, selector: #selector(gotNotificationIndex), name: Notification.Name(rawValue: "notificationFromSettingsVC"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(gotNotificationNameRover), name: Notification.Name(rawValue: "notificationFromSettingsVC"), object: nil)
         self.networkDataFetcher.getImages(nameRover: nameRover, cameraName: "") { [weak self] (result) in
             guard let result = result else { return }
             var cameras: Set<Camera> = []
@@ -55,8 +55,8 @@ class CamerasViewController: UIViewController {
         }
     }
     
-    // получение имени массива
-    @objc func gotNotificationIndex(notification: Notification) {
+    // получение имени ровера
+    @objc func gotNotificationNameRover(notification: Notification) {
         guard let userInfo = notification.userInfo, let rover = userInfo["name"] as? String else { return }
         nameLabel.text = rover
         nameRover = rover

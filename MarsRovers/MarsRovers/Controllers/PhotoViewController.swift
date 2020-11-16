@@ -17,6 +17,7 @@ class PhotoViewController: UIViewController {
     private var photoResults = [RoverSnapshot]()
     
     var networkDataFetcher = NetworkDataFetcher()
+    let cameraVC = CamerasViewController()
     
     enum Section: Int, CaseIterable {
         case photos
@@ -34,13 +35,23 @@ class PhotoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .purple
-        self.networkDataFetcher.getImages(nameRover: "Curiosity", cameraName: camera.name) { [weak self] (photoRes) in
+        setupCollectionView()
+        createDataSource()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        NotificationCenter.default.addObserver(self, selector: #selector(gotNotificationNameRover), name: Notification.Name(rawValue: "notificationFromSettingsVC"), object: nil)
+        self.networkDataFetcher.getImages(nameRover: cameraVC.nameRover, cameraName: camera.name) { [weak self] (photoRes) in
             guard let fetchedPhotos = photoRes else { return }
             self?.photoResults = fetchedPhotos.photos
             self?.reloadData()
         }
-        setupCollectionView()
-        createDataSource()
+    }
+    
+    // получение имени ровера
+    @objc func gotNotificationNameRover(notification: Notification) {
+        guard let userInfo = notification.userInfo, let rover = userInfo["name"] as? String else { return }
+        cameraVC.nameRover = rover
     }
     
     // установка collectionView

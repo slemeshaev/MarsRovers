@@ -77,7 +77,7 @@ class SectionHeader: UICollectionReusableView {
     // функция показать фотографии
     @objc func showAllPhotos() {
         guard let camera = camera else {
-            print("camera header serror")
+            print("Ошибка заголовка камеры")
             return
         }
         delegate?.did(select: camera)
