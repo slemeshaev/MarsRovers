@@ -62,13 +62,6 @@ class SettingsTableViewController: UITableViewController {
         let dictionary = ["name": rover]
         NotificationCenter.default.post(name: Notification.Name(rawValue: "notificationFromSettingsVC"), object: nil, userInfo: dictionary)
         print("Название марсохода: \(rover)")
-//        let rover = API.rovers[indexPath.row]
-//        print("Название марсохода: \(rover)")
-//        print("Номер ячейки \(indexPath.row)")
-//        let camerasVC = CamerasViewController()
-//        camerasVC.nameLabel.text = rover
-//        //navigationController?.pushViewController(camerasVC, animated: true)
-//        //view.addSubview(checkmark)
     }
 
 }

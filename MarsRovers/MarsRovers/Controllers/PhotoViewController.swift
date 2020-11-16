@@ -34,17 +34,17 @@ class PhotoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.networkDataFetcher.getImages(nameRover: cameraVC.nameRover, cameraName: camera.name) { [weak self] (photoRes) in
+            guard let fetchedPhotos = photoRes else { return }
+            self?.photoResults = fetchedPhotos.photos
+            self?.reloadData()
+        }
         setupCollectionView()
         createDataSource()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         NotificationCenter.default.addObserver(self, selector: #selector(gotNotificationNameRover), name: Notification.Name(rawValue: "notificationFromSettingsVC"), object: nil)
-        self.networkDataFetcher.getImages(nameRover: cameraVC.nameRover, cameraName: camera.name) { [weak self] (photoRes) in
-            guard let fetchedPhotos = photoRes else { return }
-            self?.photoResults = fetchedPhotos.photos
-            self?.reloadData()
-        }
     }
     
     // получение имени ровера
